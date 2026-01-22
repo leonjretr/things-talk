@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/things-talk-project.iml" filepath="$PROJECT_DIR$/.idea/things-talk-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/things-talk.iml" filepath="$PROJECT_DIR$/.idea/things-talk.iml" />
     </modules>
   </component>
 </project>
