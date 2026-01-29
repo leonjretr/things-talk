@@ -48,9 +48,7 @@ const Page = () => {
                                             <FieldError></FieldError>
                                         </Field>
                                     </div>
-
                                 </FieldGroup>
-
                         </FieldSet>
                     </FieldGroup>
                 </form>
