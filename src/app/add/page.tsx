@@ -13,9 +13,6 @@ const Page = () => {
     return (
         <div className={"flex justify-center p-10 min-h-screen bg-white overflow-visible"}>
             <div className={"flex justify-center font-poppins"}>
-                {/*<button className={"flex justify-center text-3xl font-bold mt-5"}>*/}
-                {/*    endow with a spirit anything you want*/}
-                {/*</button>*/}
                 <div className={"flex justify-center text-xs text-center p-5 font-medium italic text-brandWalnut"}>
                     people come and go, things bought and lost, <br/>
                     yet memories endure, unyielding as a stone<br/>
@@ -35,22 +32,20 @@ const Page = () => {
                             <FieldLegend className={"text-center font-inter font-bold flex justify-center"}>
                                 Add your memory. Perpetuate it.
                             </FieldLegend>
-                                <FieldGroup>
-                                    <div className="flex gap-5">
-                                        <Field>
-                                            <FieldLabel className={"font-inter font-semibold"}>Story name</FieldLabel>
-                                            <Input id={"name"} placeholder={"Once Upon a Time in Prague"} />
-                                            <FieldError></FieldError>
-                                        </Field>
-                                        <Field>
-                                            <FieldLabel className={"font-inter font-semibold"}>Story name</FieldLabel>
-                                            <Input id={"name"} placeholder={"Once Upon a Time in Prague"} />
-                                            <FieldError></FieldError>
-                                        </Field>
-                                    </div>
-
-                                </FieldGroup>
-
+                            <FieldGroup>
+                                <div className="flex gap-5">
+                                    <Field>
+                                        <FieldLabel className={"font-inter font-semibold"}>Story name</FieldLabel>
+                                        <Input id={"name"} placeholder={"Once Upon a Time in Prague"}/>
+                                        <FieldError></FieldError>
+                                    </Field>
+                                    <Field>
+                                        <FieldLabel className={"font-inter font-semibold"}>Story name</FieldLabel>
+                                        <Input id={"name"} placeholder={"Once Upon a Time in Prague"}/>
+                                        <FieldError></FieldError>
+                                    </Field>
+                                </div>
+                            </FieldGroup>
                         </FieldSet>
                     </FieldGroup>
                 </form>
