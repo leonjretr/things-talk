@@ -8,6 +8,7 @@ import {
     FieldSet,
 } from "@/components/ui/field"
 import {Input} from "@/components/ui/input";
+import { Textarea } from '@/components/ui/textarea';
 
 const Page = () => {
     return (
@@ -16,31 +17,31 @@ const Page = () => {
                 <form>
                     <FieldGroup>
                         <FieldSet>
-                            <FieldLegend className={"font-inter font-bold flex pb-5 justify-center "}>
+                            <FieldLegend className={"font-inter font-bold text-5xl flex pb-5 justify-center"}>
                                 Add your memory. Perpetuate it. Be an interpreter.
                             </FieldLegend>
                             <FieldGroup>
                                 <div className="flex gap-5 w-full">
-                                    <Field>
+                                    <Field className={"w-80 shrink-0"}>
                                         <FieldLabel className={"font-inter font-semibold"}>what is that thing?</FieldLabel>
                                         <Input id={"name"} placeholder={"a book"}/>
                                         <FieldError></FieldError>
                                     </Field>
-                                    <Field>
-                                        <FieldLabel className={"font-inter font-semibold w-full break-keep"}>describe your emotions. what do you feel thinking about it?</FieldLabel>
-                                        <Input id={"name"} placeholder={"joy, loneliness, nostalgia"}/>
+                                    <Field className={"w-80 shrink-0"}>
+                                        <FieldLabel className={"font-inter font-semibold"}>describe what do you feel thinking about it?</FieldLabel>
+                                        <Input id={"emotions"} placeholder={"joy, loneliness, nostalgia"}/>
                                         <FieldError></FieldError>
                                     </Field>
                                 </div>
                                 <div className={"flex gap-5 w-full"}>
-                                    <Field>
-                                        <FieldLabel className={"font-inter font-semibold"}>what is that thing?</FieldLabel>
-                                        <Input id={"name"} placeholder={"a book"}/>
+                                    <Field className={"w-80 shrink-0"}>
+                                        <FieldLabel className={"font-inter font-semibold"}>who makes it special? </FieldLabel>
+                                        <Input id={"people"} placeholder={"dad, mom, or yourself"}/>
                                         <FieldError></FieldError>
                                     </Field>
-                                    <Field>
-                                        <FieldLabel className={"font-inter font-semibold w-full break-keep"}>describe your emotions. what do you feel thinking about it?</FieldLabel>
-                                        <Input id={"name"} placeholder={"joy, loneliness, nostalgia"}/>
+                                    <Field className={"w-80 shrink-0"}>
+                                        <FieldLabel className={"font-inter font-semibold w-full break-keep"}>time has come. i&#39;ll let you unfold the story</FieldLabel>
+                                        <Textarea id={"memory"} placeholder={"once upon a time..."}/>
                                         <FieldError></FieldError>
                                     </Field>
                                 </div>
