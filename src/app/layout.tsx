@@ -3,6 +3,7 @@ import type {Metadata} from "next";
 import "./globals.css"
 import Header from "@/components/header/Header";
 import Wrapper from "@/components/wrapper/Wrapper";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
     title: "Things really do Talk",
@@ -19,6 +20,7 @@ export default function RootLayout({children,}: Readonly<{
             <Header/>
         </Wrapper>
         {children}
+        <Footer/>
         </body>
         </html>
     );
