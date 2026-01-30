@@ -8,7 +8,7 @@ interface FooterSocialButtonProps {
 const FooterSocialButton = ({link, title}: FooterSocialButtonProps) => {
     return (
         <a rel="noopener noreferrer"
-           href={link}
+           href={`https://${link}`}
            target="_blank"
            className={"hover:underline"}>
             {title}
