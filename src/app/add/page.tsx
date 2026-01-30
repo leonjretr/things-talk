@@ -11,7 +11,7 @@ import {
 import {Input} from "@/components/ui/input";
 import {Textarea} from '@/components/ui/textarea';
 import * as z from "zod"
-import {useForm} from "react-hook-form"
+import {useForm, Controller} from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod"
 
 const Page = () => {
@@ -62,32 +62,52 @@ const Page = () => {
                             </div>
                             <FieldGroup>
                                 <div className="flex gap-5 w-full">
-                                    <Field className={"w-80 shrink-0"}>
-                                        <FieldLabel className={"font-inter font-semibold"}>what is that
-                                            thing?</FieldLabel>
-                                        <Input id={"name"} placeholder={"a book"}/>
-                                        <FieldError></FieldError>
-                                    </Field>
-                                    <Field className={"w-80 shrink-0"}>
-                                        <FieldLabel className={"font-inter font-semibold"}>describe what do you feel
-                                            thinking about it?</FieldLabel>
-                                        <Input id={"emotions"} placeholder={"joy, loneliness, nostalgia"}/>
-                                        <FieldError></FieldError>
-                                    </Field>
+                                    <Controller name={"title"} control={form.control} render={({field, fieldState}) => (
+                                        <Field className={"w-80 shrink-0"}>
+                                            <FieldLabel className={"font-inter font-semibold"}>what is that
+                                                thing?</FieldLabel>
+                                            <Input {...field} id={"title"} placeholder={"a book"}/>
+                                            {fieldState.invalid && (<FieldError errors={[fieldState.error]}/>)}
+                                        </Field>
+                                    )}/>
+                                    <Controller name={"emotions"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field className={"w-80 shrink-0"}>
+                                                        <FieldLabel className={"font-inter font-semibold"}>describe
+                                                            what do you feel thinking about it?</FieldLabel>
+                                                        <Input {...field} id={"emotions"}
+                                                               placeholder={"joy, loneliness, nostalgia"}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
                                 </div>
                                 <div className={"flex gap-5 w-full"}>
-                                    <Field className={"w-80 shrink-0"}>
-                                        <FieldLabel className={"font-inter font-semibold"}>who makes it
-                                            special? </FieldLabel>
-                                        <Input id={"people"} placeholder={"dad, mom, or yourself"}/>
-                                        <FieldError></FieldError>
-                                    </Field>
-                                    <Field className={"w-80 shrink-0"}>
-                                        <FieldLabel className={"font-inter font-semibold w-full break-keep"}>time has
-                                            come. i&#39;ll let you unfold the story</FieldLabel>
-                                        <Textarea id={"memory"} placeholder={"once upon a time..."}/>
-                                        <FieldError></FieldError>
-                                    </Field>
+                                    <Controller name={"people"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field className={"w-80 shrink-0"}>
+                                                        <FieldLabel className={"font-inter font-semibold"}>who makes it
+                                                            special? </FieldLabel>
+                                                        <Input {...field} id={"people"}
+                                                               placeholder={"dad, mom, or yourself"}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
+                                    <Controller name={"memory"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field
+                                                        className={"w-80 shrink-0"}>
+                                                        <FieldLabel
+                                                            className={"font-inter font-semibold w-full break-keep"}>time
+                                                            has
+                                                            come. i&#39;ll let you unfold the story</FieldLabel>
+                                                        <Textarea {...field}
+                                                                  id={"memory"} placeholder={"once upon a time..."}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
                                 </div>
                             </FieldGroup>
                         </FieldSet>
