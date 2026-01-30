@@ -17,9 +17,11 @@ const Page = () => {
                 <form>
                     <FieldGroup>
                         <FieldSet>
-                            <FieldLegend className={"font-inter font-bold text-5xl flex pb-5 justify-center"}>
-                                Add your memory. Perpetuate it. Be an interpreter.
-                            </FieldLegend>
+                            <div className={"flex justify-center items-center"}>
+                                <FieldLegend className={"font-inter font-bold text-2xl"}>
+                                    Add your memory. Perpetuate it. Be an interpreter.
+                                </FieldLegend>
+                            </div>
                             <FieldGroup>
                                 <div className="flex gap-5 w-full">
                                     <Field className={"w-80 shrink-0"}>
@@ -52,9 +54,9 @@ const Page = () => {
             </div>
             <div className={"flex font-poppins text-xs text-center p-5 font-medium italic text-brandWalnut"}>
                 people come and go, things are bought and lost, <br/>
-                yet memories endure, unyielding as a cliff<br/>
-                that rush of pride in the first car dad helped choose -<br/>
-                engine hum, leather scent, childlike joy<br/>
+                yet memories endure, unyielding as a stone<br/>
+                that rush of pride in the first car dad helped to choose -<br/>
+                engine hum, leather scent and childlike joy<br/>
                 the scrutiny in mum&#39;s eyes as she toured through uni halls,<br/>
                 her hopes woven into every brick and beam.<br/>
                 the future exists not, nor is the past<br/>
