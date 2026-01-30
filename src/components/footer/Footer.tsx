@@ -1,4 +1,5 @@
 import React from 'react';
+import FooterSocialButton from "@/components/buttons/FooterSocialButton";
 
 const Footer = () => {
     const date = new Date();
@@ -10,16 +11,10 @@ const Footer = () => {
             <div className={""}>
                 thanks for visiting❤️
             </div>
-            <div className={"flex gap-3 "}>
-                <a href={"t.me/thatsleonard"} className={"hover:underline "}>
-                    telegram
-                </a>
-                <a href={"t.me/thatsleonard"} className={"hover:underline"}>
-                    linkedin
-                </a>
-                <a href={"t.me/thatsleonard"} className={"hover:underline"}>
-                    github
-                </a>
+            <div className={"flex gap-3"}>
+                <FooterSocialButton link={"t.me/thatsleonard"} title={"telegram"}/>
+                <FooterSocialButton link={"t.me/leonjretr"} title={"github"}/>
+                <FooterSocialButton link={"t.me/thatsleonard"} title={"linkedin"}/>
             </div>
         </div>
     );
