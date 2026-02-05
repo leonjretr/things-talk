@@ -36,3 +36,11 @@ export const verificationTokens = pgTable("verificationToken", {
     token: text("token").notNull(),
     expires_at: timestamp("expires_at", {mode: "date"}),
 })
+
+export const memories = pgTable("memory", {
+    userId: uuid("id").notNull().references(() => users.id),
+    objectName: varchar("name", {length: 40}),
+    emotions: text("emotion"),
+    people: text("people"),
+    description: text("description"),
+})
