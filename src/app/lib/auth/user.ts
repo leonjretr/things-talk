@@ -27,3 +27,23 @@ export async function createUserWithPassword(email: string, password: string, na
         return newUser;
     })
 }
+
+export async function getUserWithPasswordByEmail(email: string) {
+    const rows = await db
+        .select({
+            id: users.id,
+            email: users.email,
+            name: users.name,
+            passwordHash: credentials.passwordHash,
+        })
+        .from(users)
+        .innerJoin(credentials, eq(credentials.userId, users.id))
+        .where(eq(users.email, email))
+        .limit(1)
+
+    return rows[0] ?? null;
+}
+
+export async function verifyPassword(password: string, passwordHash: string) {
+    return bcrypt.compare(password, passwordHash)
+}
