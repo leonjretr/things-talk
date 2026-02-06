@@ -15,6 +15,12 @@ export const users = pgTable("user", {
     description: text("description"),
 })
 
+export const credentials = pgTable("credentials", {
+    userId: uuid("id").notNull().primaryKey().references(() => users.id),
+    passwordHash: text("password_hash").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+})
+
 export const accounts = pgTable("account", {
     userId: uuid("id").notNull().references(() => users.id),
     type: text("type").notNull(),
