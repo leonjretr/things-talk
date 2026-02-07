@@ -2,7 +2,7 @@ import React from 'react';
 
 const Page = () => {
     return (
-        <div className={"min-h-screen"}>
+        <div className={"min-h-screen "}>
             
         </div>
     );
