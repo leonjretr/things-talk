@@ -15,18 +15,18 @@ const Page = () => {
                 <div className={"flex justify-center text-brandCoffee font-normal text-4xl"}>
                     tech stack
                 </div>
-                {/*<div className={"flex items-start m-5 gap-3 text-xl justify-center"}>*/}
-                {/*    <div>*/}
-                {/*        React <br/>*/}
-                {/*        Next.js <br/>*/}
-                {/*        Auth.js <br/>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        Drizzle ORM <br/>*/}
-                {/*        PostgreSQL <br/>*/}
-                {/*        Zod <br/>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className={"flex items-start m-5 gap-3 text-xl justify-center"}>
+                    <div>
+                        React <br/>
+                        Next.js <br/>
+                        Auth.js <br/>
+                    </div>
+                    <div>
+                        Drizzle ORM <br/>
+                        PostgreSQL <br/>
+                        Zod <br/>
+                    </div>
+                </div>
             </div>
         </div>
     );
