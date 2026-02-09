@@ -33,12 +33,22 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
 
                 const userEmail = await getUserByEmail(email);
                 if (!userEmail) return null
-                const user = await getUserWithPasswordByEmail(userEmail.email)
 
+                const user = await getUserWithPasswordByEmail(userEmail.email)
+                if (!user) return null
 
                 const ok = await verifyPassword(password, user.passwordHash)
+                if (!ok) return null
+
+                return {id: user.id, email: user.email, name: user.name ?? null}
             }
         })
-    ]
+    ],
 
+    callbacks: {
+        async session({session, user}) {
+            if (session.user) session.user.email = user.email
+            return session
+        },
+    },
 })
