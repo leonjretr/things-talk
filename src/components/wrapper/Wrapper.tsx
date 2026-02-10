@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import Headroom from "react-headroom";
+// import Headroom from "react-headroom";
 
 interface WrapperProps {
     children: React.ReactNode
@@ -9,9 +9,10 @@ interface WrapperProps {
 const Wrapper = ({children}: WrapperProps) => {
     return (
         <>
-            <Headroom>
-                {children}
-            </Headroom>
+            {/*<Headroom>*/}
+
+            {/*</Headroom>*/}
+            {children}
         </>
     );
 };

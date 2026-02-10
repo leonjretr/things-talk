@@ -2,7 +2,6 @@ import type {Metadata} from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css"
 import Header from "@/components/header/Header";
-import Wrapper from "@/components/wrapper/Wrapper";
 import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
@@ -16,9 +15,9 @@ export default function RootLayout({children,}: Readonly<{
     return (
         <html lang="en">
         <body className={``}>
-        <Wrapper>
-            <Header/>
-        </Wrapper>
+        {/*<Wrapper>*/}
+        {/*</Wrapper>*/}
+        <Header/>
         {children}
         <Footer/>
         </body>
