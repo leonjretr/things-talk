@@ -31,10 +31,7 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
 
                 const {email, password} = schema.parse(raw);
 
-                const userEmail = await getUserByEmail(email);
-                if (!userEmail) return null
-
-                const user = await getUserWithPasswordByEmail(userEmail.email)
+                const user = await getUserWithPasswordByEmail(email)
                 if (!user) return null
 
                 const ok = await verifyPassword(password, user.passwordHash)
