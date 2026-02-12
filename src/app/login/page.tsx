@@ -36,9 +36,7 @@ const Page = () => {
                     <FieldSet>
                         <FieldGroup>
                             <Field>
-                                <FieldLabel>
-
-                                </FieldLabel>
+                                <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
                                 <Input/>
                                 <FieldDescription>
 
