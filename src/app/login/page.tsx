@@ -31,13 +31,13 @@ const Page = () => {
 
     return (
         <div className={"min-h-screen"}>
-            <div className={"flex flex-col items-center"}>
+            <div className={"flex flex-col items-center m-10"}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
                         <FieldGroup>
                             <Field>
                                 <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                                <Input/>
+                                <Input />
                                 <FieldDescription>
 
                                 </FieldDescription>
