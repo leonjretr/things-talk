@@ -38,7 +38,7 @@ const Page = () => {
                             <Field>
                                 <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
                                 <Input className={"w-32"}/>
-                                <FieldDescription>
+                                <FieldDescription className={""}>
 
                                 </FieldDescription>
                             </Field>
