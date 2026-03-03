@@ -4,7 +4,7 @@ import GitHub from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import {DrizzleAdapter} from "@auth/drizzle-adapter"
 import {db} from "../db/index"
-import {getUserByEmail, createUserWithPassword, getUserWithPasswordByEmail, verifyPassword} from "../auth/user"
+import {getUserWithPasswordByEmail, verifyPassword} from "../auth/user"
 import {z} from "zod"
 
 export const {handlers, auth, signIn, signOut} = NextAuth({
@@ -44,7 +44,11 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
 
     callbacks: {
         async session({session, user}) {
-            if (session.user) session.user.email = user.email
+            if (session.user) {
+                session.user.email = user.email;
+                session.user.name = user.name;
+            }
+
             return session
         },
     },
