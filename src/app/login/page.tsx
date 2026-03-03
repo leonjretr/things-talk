@@ -7,7 +7,9 @@ import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
 import {Input} from '@/components/ui/input';
 import Link from "next/link";
 import {FaGithub, FaGoogle} from "react-icons/fa";
-import { signIn, signOut, useSession } from "next-auth/react"
+import {signIn} from "next-auth/react"
+// import { signIn, signOut, useSession } from "next-auth/react"
+
 
 const Page = () => {
     const formSchema = z.object({
@@ -32,7 +34,7 @@ const Page = () => {
         console.log(data)
     }
 
-    const { data: session } = useSession()
+    // const { data: session } = useSession()
 
 
     return (
