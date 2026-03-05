@@ -2,8 +2,11 @@ import React from 'react';
 import LoginButton from "@/components/buttons/LoginButton";
 import SignUpButton from '../buttons/SignUpButton';
 import Link from "next/link";
+import {auth} from "@/app/lib/auth/server";
 
-const Header = () => {
+const Header = async () => {
+
+    const session = await auth();
 
     return (
         <div
@@ -26,10 +29,16 @@ const Header = () => {
                     </Link>
                 </button>
             </div>
-            <div className="flex items-center gap-x-3">
-                <LoginButton text={"login"}/>
-                <SignUpButton text={"sign up"}/>
-            </div>
+            {
+                session ? (<div> Hello, {session.user?.name} </div>) :
+                    (
+                        <div className="flex items-center gap-x-3">
+                            <LoginButton text={"login"}/>
+                            <SignUpButton text={"sign up"}/>
+                        </div>
+                    )
+            }
+
         </div>
     );
 };

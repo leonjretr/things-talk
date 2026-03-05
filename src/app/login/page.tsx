@@ -1,41 +1,21 @@
-"use client"
 import React from 'react';
-import {useForm} from "react-hook-form";
-import * as z from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
-import {Input} from '@/components/ui/input';
 import Link from "next/link";
 import {FaGithub, FaGoogle} from "react-icons/fa";
 import {signIn} from "next-auth/react"
+import LoginForm from '@/components/forms/LoginForm';
+import {auth} from "@/app/lib/auth/server";
+import {redirect} from 'next/navigation';
 // import { signIn, signOut, useSession } from "next-auth/react"
 
 
 const Page = () => {
-    const formSchema = z.object({
-        email: z
-            .email("Sorry, it seems like your email address doesn't exist"),
-        password: z
-            .string()
-            .min(7, "Sorry, your password is too short")
-            .includes("@#$")
-            .trim(),
-    })
-
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: "",
-            password: "",
+    const check = async () => {
+        const session = await auth();
+        if (session) {
+            redirect("/");
         }
-    })
-
-    const onSubmit = (data: z.infer<typeof formSchema>) => {
-        console.log(data)
     }
-
-    // const { data: session } = useSession()
-
+    check();
 
     return (
         <div className={"min-h-screen"}>
@@ -49,21 +29,7 @@ const Page = () => {
                             using credentials
                         </div>
                         <div>
-                            <form onSubmit={form.handleSubmit(onSubmit)}>
-                                <FieldSet>
-                                    <FieldGroup>
-                                        <Field className={"max-w-48"}>
-                                            <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                                            <Input/>
-                                        </Field>
-                                        <Field className={"max-w-48 "}>
-                                            <FieldLabel className={"font-inter font-semibold"}>your
-                                                password</FieldLabel>
-                                            <Input/>
-                                        </Field>
-                                    </FieldGroup>
-                                </FieldSet>
-                            </form>
+                            <LoginForm/>
                             <h1 className={"text-sm text-right font-inter my-5"}> Not registered?&nbsp;
                                 <Link href={"/sign-up"} className={"underline text-blue-700 font-semibold"}>
                                     Create an account</Link>
