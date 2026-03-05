@@ -30,7 +30,7 @@ const Header = async () => {
                 </button>
             </div>
             {
-                session ? (<div> Hello, {session.user?.name} </div>) :
+                session ? (<div className={"font-poppins italic text-brandCoffee"}> Hello, {session.user?.name} </div>) :
                     (
                         <div className="flex items-center gap-x-3">
                             <LoginButton text={"login"}/>

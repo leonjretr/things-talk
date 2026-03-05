@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from "next/link";
 import {FaGithub, FaGoogle} from "react-icons/fa";
-import {signIn} from "next-auth/react"
 import LoginForm from '@/components/forms/LoginForm';
 import {auth} from "@/app/lib/auth/server";
 import {redirect} from 'next/navigation';
+import ProviderButton from '@/components/buttons/ProviderButton';
 // import { signIn, signOut, useSession } from "next-auth/react"
 
 
@@ -42,11 +42,7 @@ const Page = () => {
                             using one of the services
                         </div>
                         <div className={"flex flex-col items-start gap-y-3"}>
-                            <button
-                                onClick={() => signIn("github")}
-                                className={"flex items-center gap-2 px-3 py-2 bg-brandCoffee border-2 border-brandCoffee text-white font-inter font-medium rounded-lg cursor-pointer"}>
-                                <FaGithub/> Github
-                            </button>
+                            <ProviderButton text={"Github"} signProvider={"github"}/>
                             <button
                                 className={"flex items-center gap-2 px-3 py-2 bg-white border-2 border-brandCoffee text-brandCoffee font-inter font-medium rounded-lg cursor-pointer"}>
                                 <FaGoogle/> Google
