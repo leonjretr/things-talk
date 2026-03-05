@@ -8,12 +8,15 @@ import {
 
 export const users = pgTable("user", {
     id: uuid("id").defaultRandom().primaryKey(),
+
     name: varchar("name", {length: 40}),
     surname: varchar("surname", {length: 40}),
-    email: varchar("email", {length: 50}).unique(),
+    email: varchar("email", {length: 50}).unique().notNull(),
+
     emailVerified: timestamp("emailVerified", {mode: "date"}),
     image: text("image"),
-    created_at: timestamp({mode: "date"}),
+
+    created_at: timestamp({mode: "date"}).defaultNow(),
     description: text("description"),
 })
 
@@ -24,19 +27,28 @@ export const credentials = pgTable("credentials", {
 })
 
 export const accounts = pgTable("account", {
-    userId: uuid("id").notNull().references(() => users.id),
+    userId: uuid("userId")
+        .notNull()
+        .references(() => users.id),
+
     type: text("type").notNull(),
     provider: text("provider").notNull(),
     providerAccountId: text("providerAccountId").notNull(),
-    access_token: text("access_token"),
+
     refresh_token: text("refresh_token"),
-    expires_at: timestamp("expires_at", {mode: "date"}),
+    access_token: text("access_token"),
+    expires_at: timestamp("expires_at", { mode: "date" }),
+
+    token_type: text("token_type"),
+    scope: text("scope"),
+    id_token: text("id_token"),
+    session_state: text("session_state"),
 })
 
 export const sessions = pgTable("session", {
     sessionToken: text("sessionToken").primaryKey(),
     userId: uuid().notNull().references(() => users.id),
-    expires: timestamp("expires", {mode: "date"}),
+    expires: timestamp("expires", {mode: "date"}).notNull(),
 })
 
 export const verificationTokens = pgTable("verificationToken", {
