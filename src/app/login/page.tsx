@@ -11,6 +11,7 @@ import ProviderButton from '@/components/buttons/ProviderButton';
 const Page = () => {
     const check = async () => {
         const session = await auth();
+        console.log("session:", session);
         if (session) {
             redirect("/");
         }
