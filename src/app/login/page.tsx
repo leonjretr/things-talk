@@ -53,7 +53,6 @@ const Page = () => {
                                 <FaGithub/> Github
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>

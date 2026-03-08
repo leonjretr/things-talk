@@ -3,6 +3,9 @@ import LoginButton from "@/components/buttons/LoginButton";
 import SignUpButton from '../buttons/SignUpButton';
 import Link from "next/link";
 import {auth} from "@/app/lib/auth/server";
+import ProfileDrawer from '../drawer/ProfileDrawer';
+import {observer} from "mobx-react";
+import DrawerStore from "@/stores/DrawerStore";
 
 const Header = async () => {
 
@@ -10,7 +13,7 @@ const Header = async () => {
 
     return (
         <div
-            className={"flex justify-between items-center w-full px-3 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
+            className={"flex justify-between items-center w-full h-20 px-3 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
             <div className="flex items-center">
                 <Link href={"/goals"} className={"px-3 font-medium font-poppins italic hover:underline cursor-pointer"}>
                     project goals
@@ -29,18 +32,26 @@ const Header = async () => {
                     </Link>
                 </button>
             </div>
-            {
-                session ? (<div className={"font-poppins italic text-brandCoffee"}> Hello, {session.user?.name} </div>) :
-                    (
-                        <div className="flex items-center gap-x-3">
-                            <LoginButton text={"login"}/>
-                            <SignUpButton text={"sign up"}/>
-                        </div>
-                    )
-            }
+            <button onClick={() => DrawerStore.setIsOpen}
+                    className={"font-poppins italic text-brandCoffee px-3"}> Hello,
+                Leon!
+                <ProfileDrawer name={"Leon"}/>
+            </button>
+
+
+            {/*{*/}
+            {/*    session ? (<div className={"font-poppins italic text-brandCoffee px-3"}> Hello, {session.user?.name}*/}
+            {/*            <ProfileDrawer/> </div>) :*/}
+            {/*        (*/}
+            {/*            <div className="flex items-center gap-x-3">*/}
+            {/*                <LoginButton text={"login"}/>*/}
+            {/*                <SignUpButton text={"sign up"}/>*/}
+            {/*            </div>*/}
+            {/*        )*/}
+            {/*}*/}
 
         </div>
     );
 };
 
-export default Header;
+export default observer(Header);
