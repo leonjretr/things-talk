@@ -3,9 +3,7 @@ import LoginButton from "@/components/buttons/LoginButton";
 import SignUpButton from '../buttons/SignUpButton';
 import Link from "next/link";
 import {auth} from "@/app/lib/auth/server";
-import ProfileDrawer from '../drawer/ProfileDrawer';
-import {observer} from "mobx-react";
-import DrawerStore from "@/stores/DrawerStore";
+import ProfileButton from "@/components/buttons/ProfileButton";
 
 const Header = async () => {
 
@@ -32,26 +30,19 @@ const Header = async () => {
                     </Link>
                 </button>
             </div>
-            <button onClick={() => DrawerStore.setIsOpen}
-                    className={"font-poppins italic text-brandCoffee px-3"}> Hello,
-                Leon!
-                <ProfileDrawer name={"Leon"}/>
-            </button>
 
-
-            {/*{*/}
-            {/*    session ? (<div className={"font-poppins italic text-brandCoffee px-3"}> Hello, {session.user?.name}*/}
-            {/*            <ProfileDrawer/> </div>) :*/}
-            {/*        (*/}
-            {/*            <div className="flex items-center gap-x-3">*/}
-            {/*                <LoginButton text={"login"}/>*/}
-            {/*                <SignUpButton text={"sign up"}/>*/}
-            {/*            </div>*/}
-            {/*        )*/}
-            {/*}*/}
+            {
+                session ? (<ProfileButton/>) :
+                    (
+                        <div className="flex items-center gap-x-3">
+                            <LoginButton text={"login"}/>
+                            <SignUpButton text={"sign up"}/>
+                        </div>
+                    )
+            }
 
         </div>
     );
 };
 
-export default observer(Header);
+export default Header;
