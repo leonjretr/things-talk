@@ -7,8 +7,8 @@ class DrawerStore {
         makeAutoObservable(this);
     }
 
-    setIsOpen(isOpen: boolean) {
-        this.isOpen = !isOpen;
+    setIsOpen() {
+        this.isOpen = !this.isOpen;
     }
 }
 

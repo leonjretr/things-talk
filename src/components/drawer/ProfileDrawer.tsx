@@ -1,7 +1,8 @@
 "use client"
 import React from 'react';
 import DrawerButton from "@/components/drawer/DrawerButton";
-import {FaBook, FaCodeBranch, FaHeart, FaRegUserCircle, FaSignOutAlt} from 'react-icons/fa';
+import {FaHeart, FaRegUserCircle, FaSignOutAlt} from 'react-icons/fa';
+import {GiBookshelf} from "react-icons/gi";
 import DrawerStore from '@/stores/DrawerStore';
 import {observer} from "mobx-react";
 
@@ -10,6 +11,14 @@ interface ProfileDrawerProps {
 }
 
 const ProfileDrawer = ({name}: ProfileDrawerProps) => {
+
+    const buttons = [
+        {name: "profile", icon: <FaRegUserCircle/>},
+        {name: "memories", icon: <GiBookshelf/>},
+        {name: "favourites", icon: <FaHeart/>},
+        {name: "log out", icon: <FaSignOutAlt/>}
+    ];
+
     return (
         <div
             className={`${DrawerStore.isOpen && "fixed inset-0 z-30 bg-black bg-opacity-15 overscroll-hidden backdrop-blur-sm"}`}>
@@ -32,12 +41,9 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
 
                 <div className="py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
-                        <DrawerButton name={"My Profile"} icon={<FaRegUserCircle/>}/>
-                        <DrawerButton name={"My Favourites"} icon={<FaHeart/>}/>
-                        <DrawerButton name={"My Stories"} icon={<FaBook/>}/>
-                        <DrawerButton name={"My Branches"} icon={<FaCodeBranch/>}/>
-                        <DrawerButton name={"Log out"} icon={<FaSignOutAlt/>}/>
-                        {/* Other menu items */}
+                        {buttons.map((button, index) => (
+                            <DrawerButton key={index} name={button.name} icon={button.icon}/>
+                        ))}
                     </ul>
                 </div>
             </div>

@@ -30,9 +30,9 @@ const Header = async () => {
                     </Link>
                 </button>
             </div>
-
+            {/*<ProfileButton name={"Leon"}/>*/}
             {
-                session ? (<ProfileButton/>) :
+                session?.user?.name ? (<ProfileButton name={session.user.name}/>) :
                     (
                         <div className="flex items-center gap-x-3">
                             <LoginButton text={"login"}/>
