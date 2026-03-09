@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
             <div className={"flex gap-3"}>
                 <FooterSocialButton link={"t.me/thatsleonard"} title={"telegram"}/>
-                <FooterSocialButton link={"t.me/leonjretr"} title={"github"}/>
+                <FooterSocialButton link={"github.com/leonjretr"} title={"github"}/>
                 <FooterSocialButton link={"www.linkedin.com/in/leonid-svietlychnyi-bbb47a220/"} title={"linkedin"}/>
             </div>
         </div>

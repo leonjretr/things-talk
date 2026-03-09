@@ -13,15 +13,15 @@ interface ProfileDrawerProps {
 const ProfileDrawer = ({name}: ProfileDrawerProps) => {
 
     const buttons = [
-        {name: "profile", icon: <FaRegUserCircle/>},
-        {name: "memories", icon: <GiBookshelf/>},
-        {name: "favourites", icon: <FaHeart/>},
-        {name: "log out", icon: <FaSignOutAlt/>}
+        {name: "profile", icon: <FaRegUserCircle/>, toLink: "/me"},
+        {name: "memories", icon: <GiBookshelf/>, toLink: "/memories"},
+        {name: "favourites", icon: <FaHeart/>, toLink: "/favourites"},
+        {name: "log out", icon: <FaSignOutAlt/>, toLink: "/logout"},
     ];
 
     return (
         <div
-            className={`${DrawerStore.isOpen && "fixed inset-0 z-30 bg-black bg-opacity-15 overscroll-hidden backdrop-blur-sm"}`}>
+            className={`${DrawerStore.isOpen && "fixed inset-0 z-30 bg-black bg-opacity-15 overscroll-hidden backdrop-blur-sm cursor-default"}`}>
             <div
                 className={`fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-all transform duration-300 ${DrawerStore.isOpen ? 'translate-x-0' : 'translate-x-full'} bg-white w-64`}
             >
@@ -42,7 +42,8 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
                 <div className="py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
                         {buttons.map((button, index) => (
-                            <DrawerButton key={index} name={button.name} icon={button.icon}/>
+                            <DrawerButton key={index} name={button.name} icon={button.icon}
+                                          toLink={button.toLink}/>
                         ))}
                     </ul>
                 </div>
