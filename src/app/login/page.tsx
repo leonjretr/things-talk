@@ -2,21 +2,11 @@ import React from 'react';
 import Link from "next/link";
 import {FaGithub, FaGoogle} from "react-icons/fa";
 import LoginForm from '@/components/forms/LoginForm';
-import {auth} from "@/app/lib/auth/server";
-import {redirect} from 'next/navigation';
 import ProviderButton from '@/components/buttons/ProviderButton';
 // import { signIn, signOut, useSession } from "next-auth/react"
 
 
 const Page = () => {
-    const check = async () => {
-        const session = await auth();
-        console.log("session:", session);
-        if (session) {
-            redirect("/");
-        }
-    }
-    check();
 
     return (
         <div className={"min-h-screen"}>
