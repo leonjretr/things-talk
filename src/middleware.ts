@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from 'next/server';
 import {getToken} from "next-auth/jwt";
 
-const publicRoutes = ["/login", "/sign-up"]
+const publicRoutes = ["/login", "/sign-up", "/me/:path*"]
 
 export async function middleware(req: NextRequest) {
     const token = await getToken({req, secret: process.env.NEXTAUTH_SECRET})
