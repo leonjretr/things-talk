@@ -1,13 +1,18 @@
-"use client"
 import React from 'react';
 import Link from "next/link";
 import {FaGithub, FaGoogle} from "react-icons/fa";
 import LoginForm from '@/components/forms/LoginForm';
 import ProviderButton from '@/components/buttons/ProviderButton';
+import {auth} from '../lib/auth/server';
+import {redirect} from "next/navigation";
 // import { signIn, signOut, useSession } from "next-auth/react"
 
 
-const Page = () => {
+const Page = async () => {
+    const session = await auth();
+    if (session) {
+        redirect("/");
+    }
 
     return (
         <div className={"min-h-screen"}>
