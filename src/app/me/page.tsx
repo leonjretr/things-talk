@@ -11,13 +11,11 @@ const Page = async () => {
     return (
         <div className={"min-h-screen"}>
             <ProfileUserPlate/>
-            <div>
-
+            <div className={"flex h-12 max-w-full mx-10 my-5 border-2 border-brandTangerine justify-evenly items-center rounded-md font-poppins"}>
+                <div>favourites</div>
+                <div>memories</div>
+                <div>settings</div>
             </div>
-            <div>
-
-            </div>
-
         </div>
     );
 };

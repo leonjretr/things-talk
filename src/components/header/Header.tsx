@@ -39,7 +39,6 @@ const Header = async () => {
                         </div>
                     )
             }
-
         </div>
     );
 };
