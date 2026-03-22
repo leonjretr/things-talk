@@ -6,7 +6,7 @@ import Footer from "@/components/footer/Footer";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-    title: "Things really do Talk",
+    title: "things really do talk",
     description: "Tell the stories your objects cannot",
 };
 
@@ -15,7 +15,11 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
     return (
         <html lang="en">
-        <body className={``}>
+        <head>
+            <title>things really do talk</title>
+            <link rel="icon" href="/src/app/icon.ico" sizes="any"/>
+        </head>
+        <body className={"antialiased"}>
         {/*<Wrapper>*/}
         {/*</Wrapper>*/}
         <Header/>
