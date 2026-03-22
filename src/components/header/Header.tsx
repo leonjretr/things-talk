@@ -6,7 +6,6 @@ import {auth} from "@/app/lib/auth/server";
 import ProfileButton from "@/components/buttons/ProfileButton";
 
 const Header = async () => {
-
     const session = await auth();
 
     return (
