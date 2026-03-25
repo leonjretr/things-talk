@@ -6,7 +6,7 @@ import Link from "next/link";
 const ObjectMemoryCard = () => {
 
     return (
-        <Link href={"/"} className={""}>
+        <Link href={"/memory/"} className={""}>
             <motion.div
                 whileHover={{scale: 1.1}}
                 className={"flex flex-col justify-center cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
