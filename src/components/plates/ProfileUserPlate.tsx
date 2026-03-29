@@ -16,7 +16,7 @@ const ProfileUserPlate = () => {
                         <div className={"text-5xl font-bold italic"}>hi, Leon</div>
                         {/*<div className={"text-3xl font-medium mt-1.5"}> Renowned author</div>*/}
                         <div className={"flex gap-x-3 items-center mt-1 text-lg font-medium"}>
-                            <div>32 stories</div>
+                            <div>you&#39;ve got: 32 stories</div>
                         </div>
                     </div>
                 </div>
