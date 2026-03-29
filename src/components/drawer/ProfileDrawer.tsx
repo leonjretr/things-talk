@@ -5,6 +5,8 @@ import {FaHeart, FaRegUserCircle, FaSignOutAlt} from 'react-icons/fa';
 import {GiBookshelf} from "react-icons/gi";
 import DrawerStore from '@/stores/DrawerStore';
 import {observer} from "mobx-react";
+import SignOutButton from "@/components/buttons/SignOutButton";
+
 
 interface ProfileDrawerProps {
     name: string;
@@ -14,9 +16,8 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
 
     const buttons = [
         {name: "profile", icon: <FaRegUserCircle/>, toLink: "/me"},
-        {name: "memories", icon: <GiBookshelf/>, toLink: "/memories"},
-        {name: "favourites", icon: <FaHeart/>, toLink: "/favourites"},
-        {name: "log out", icon: <FaSignOutAlt/>, toLink: "/logout"},
+        {name: "memories", icon: <GiBookshelf/>, toLink: "/me/memories"},
+        {name: "favourites", icon: <FaHeart/>, toLink: "/me/favourites"},
     ];
 
     return (
@@ -45,6 +46,7 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
                             <DrawerButton key={index} name={button.name} icon={button.icon}
                                           toLink={button.toLink}/>
                         ))}
+                        <SignOutButton name={"log out"} icon={<FaSignOutAlt/>}/>
                     </ul>
                 </div>
             </div>
