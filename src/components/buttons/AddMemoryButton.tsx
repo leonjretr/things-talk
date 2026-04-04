@@ -8,7 +8,7 @@ import Link from "next/link";
 const AddMemoryButton = () => {
         return (
             <div className={"flex items-center gap-x-3"}>
-                <Link href={"/add"} className={"font-semibold"}>
+                <Link href={"/me/add"} className={"font-semibold"}>
                     <motion.button
                         whileHover={{scale: 1.1}}
                         whileTap={{scale: 0.95}}
