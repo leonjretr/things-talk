@@ -21,17 +21,21 @@ const Page = async () => {
                     Sign in
                 </div>
                 <div className={"flex"}>
-                    <div className={"flex flex-col items-end my-5 gap-y-3 text-right"}>
-                        <div className={"text-sm font-poppins mb-6"}>
+                    <div className={"flex flex-col my-5 gap-y-3 "}>
+                        <div className={"text-sm font-poppins mb-6 items-end text-right"}>
                             using credentials
                         </div>
-                        <div>
+                        <div className={"flex flex-col"}>
                             <LoginForm/>
-                            <h1 className={"text-sm text-right font-inter my-5"}> Not registered?&nbsp;
+                            <h1 className={"text-sm text-ce font-inter mt-5"}> Not registered?&nbsp;
                                 <Link href={"/sign-up"} className={"underline text-blue-700 font-semibold"}>
                                     Create an account</Link>
                             </h1>
                         </div>
+                        <div className={"flex justify-center"}>
+                            <button className={"bg-brandLightgold w-max text-brandCoffee font-inter font-semibold rounded-md p-2"}>sign in!</button>
+                        </div>
+
                     </div>
                     <div className="mx-6 w-px bg-brandCoffee dark:bg-zinc-700 self-stretch"/>
                     <div className={"flex flex-col my-5"}>
@@ -40,17 +44,18 @@ const Page = async () => {
                         </div>
                         <div className={"flex flex-col items-start gap-y-3"}>
                             <ProviderButton text={"Github"} signProvider={"github"}/>
-                            <button
+                            <div
                                 className={"flex items-center gap-2 px-3 py-2 bg-white border-2 border-brandCoffee text-brandCoffee font-inter font-medium rounded-lg cursor-pointer"}>
                                 <FaGoogle/> Google
-                            </button>
-                            <button
+                            </div>
+                            <div
                                 className={"flex items-center gap-2 px-3 py-2 bg-brandCoffee border-2 border-brandCoffee text-white font-inter font-medium rounded-lg cursor-pointer"}>
                                 <FaGithub/> Github
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );
