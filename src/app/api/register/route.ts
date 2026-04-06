@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         })
     } catch (err) {
         return NextResponse.json(
-            {error: "Invalid data"},
+            {error: "Invalid data", err},
             {status: 400}
         )
     }
