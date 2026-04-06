@@ -25,6 +25,7 @@ export async function POST(req: Request) {
         const user = await createUserWithPassword(email, password, name, surname)
 
         return NextResponse.json({
+            status: 200,
             message: "User created",
             userId: user.id,
         })
