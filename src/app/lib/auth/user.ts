@@ -10,7 +10,7 @@ export async function getUserByEmail(email: string) {
     return rows[0] ?? null;
 }
 
-export async function createUserWithPassword(email: string, password: string, name?: string) {
+export async function createUserWithPassword(email: string, password: string, name?: string, surname?: string) {
     const passwordHash = await bcrypt.hash(password, 12);
 
     return db.transaction(async (trcontext) => {
@@ -19,6 +19,7 @@ export async function createUserWithPassword(email: string, password: string, na
             .values({
                 email,
                 name: name ?? null,
+                surname: surname ?? null,
             })
             .returning();
 
