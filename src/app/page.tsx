@@ -7,6 +7,7 @@ export default function Home() {
             <div className={"flex flex-col items-center justify-center p-5 gap-y-5"}>
                 <AddMemoryButton/>
                 <ObjectMemoryCard title={"My first memory"} description={"Description of the first memory!"}/>
+
             </div>
         </div>
     );
