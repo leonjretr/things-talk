@@ -54,6 +54,7 @@ const SignUpForm = () => {
                 });
             }
         }
+
         return (
             <>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
