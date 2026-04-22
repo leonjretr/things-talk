@@ -28,6 +28,7 @@ const SignUpForm = () => {
                 name: "",
                 surname: ""
             }
+
         })
 
         const onSubmit = async (data: z.infer<typeof formSchema>) => {
