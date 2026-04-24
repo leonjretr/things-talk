@@ -1,15 +1,17 @@
 import React from 'react';
 import Link from "next/link";
 import SignUpForm from "@/components/forms/SignUpForm";
+import {redirect} from "next/navigation";
+import {auth} from "@/app/lib/auth/server";
 
-const Page = () => {
-    // const session = await auth();
-    // if (session) {
-    //     redirect("/");
-    // }
+const Page = async () => {
+    const session = await auth();
+    if (session) {
+        redirect("/");
+    }
 
     return (
-        <div className={"min-h-screen h-full flex items-center justify-center"}>
+        <div className={"min-h-screen h-full flex justify-center mt-14"}>
             <div className={"w-full max-w-lg mx-auto px-6"}>
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-poppins font-semibold">
@@ -29,8 +31,6 @@ const Page = () => {
                         </button>
                     </div>
                 </div>
-
-
             </div>
         </div>
     );
