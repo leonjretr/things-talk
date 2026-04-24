@@ -15,10 +15,10 @@ const Page = async () => {
     }
 
     return (
-        <div className={"min-h-screen"}>
-            <div className={"flex flex-col items-center m-10"}>
-                <div className={"text-3xl font-poppins font-semibold mb-1"}>
-                    Sign in
+        <div className={"min-h-screen flex items-center justify-center"}>
+            <div className={"w-full max-w-lg mx-auto"}>
+                <div className={"text-3xl font-poppins font-semibold mb-5 text-center"}>
+                    sign in to your account
                 </div>
                 <div className={"flex"}>
                     <div className={"flex flex-col my-5 gap-y-3 "}>

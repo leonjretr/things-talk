@@ -61,7 +61,7 @@ const SignUpForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
                         <FieldGroup>
-                            <div className={"flex gap-x-3"}>
+                            <div className={"flex gap-x-3 justify-center"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your name</FieldLabel>
                                     <Input className={"w-56"} placeholder={"John"} required/>
