@@ -5,7 +5,11 @@ import {IoAdd} from "react-icons/io5";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card";
 import Link from "next/link";
 
-const AddMemoryButton = () => {
+interface AddMemoryButtonProps {
+    buttonText: string;
+}
+
+const AddMemoryButton = ({buttonText}: AddMemoryButtonProps) => {
         return (
             <div className={"flex items-center gap-x-3"}>
                 <Link href={"/me/add"} className={"font-semibold"}>
@@ -19,7 +23,7 @@ const AddMemoryButton = () => {
                 <HoverCard>
                     <HoverCardTrigger asChild>
                         <div className={"font-semibold"}>
-                            Add a new object memory
+                            {buttonText}
                         </div>
                     </HoverCardTrigger>
                     <HoverCardContent>
