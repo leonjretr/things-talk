@@ -43,23 +43,25 @@ export default function Home() {
                 <div className={"relative w-full"}>
                     <div className={"flex justify-center"}>
                         <Image src={background} alt={"Main page background"} width={1000} height={300}
-                               className={"rounded-md"}/>
+                               className={"rounded-lg"}/>
                     </div>
 
-                    <div className="absolute inset-0 flex flex-col items-center justify-center px-8">
-                        <h1 className="text-white text-7xl font-inter font-bold">
-                            things talk.
-                        </h1>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="flex flex-col items-center backdrop-blur-sm p-4 rounded-lg">
+                            <h1 className="text-white text-7xl font-poppins font-bold backdrop-blur-sm px-4 rounded-md">
+                                things talk.
+                            </h1>
+                            <p className="text-white max-w-md mt-4 font-quicksand font-medium backdrop-blur-sm p-2 rounded-md">
+                                everything has a story. share what matters
+                            </p>
+                            <Link href="/me/add">
+                                <button
+                                    className="mt-6 bg-white text-black transition hover:scale-110 font-quicksand px-6 py-3 rounded-lg font-bold">
+                                    try now →
+                                </button>
+                            </Link>
+                        </div>
 
-                        <p className="text-white max-w-md mt-4 font-inter font-medium">
-                            everything has a story. share what matters
-                        </p>
-                        <Link href="/me/add">
-                            <button
-                                className="mt-6 bg-white text-black transition hover:scale-110 font-inter px-6 py-3 rounded-lg w-fit font-medium">
-                                try now →
-                            </button>
-                        </Link>
                     </div>
                 </div>
             </div>
