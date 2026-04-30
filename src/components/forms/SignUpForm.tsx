@@ -6,6 +6,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
 import {signIn} from "next-auth/react"
+import Link from "next/link";
 
 const SignUpForm = () => {
         const formSchema = z.object({
@@ -32,6 +33,7 @@ const SignUpForm = () => {
         })
 
         const onSubmit = async (data: z.infer<typeof formSchema>) => {
+            console.log("submit pressed")
             const reg = await fetch("/api/register", {
                 method: "POST",
                 headers: {
@@ -46,6 +48,7 @@ const SignUpForm = () => {
                     },
                 }),
             })
+            console.log("submit pressed 2")
             if (reg.status == 200) {
                 await signIn("credentials", {
                     email: data.email,
@@ -58,7 +61,7 @@ const SignUpForm = () => {
 
         return (
             <>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form>
                     <FieldSet>
                         <FieldGroup>
                             <div className={"flex gap-x-3 justify-center"}>
@@ -83,6 +86,16 @@ const SignUpForm = () => {
                             </div>
                         </FieldGroup>
                     </FieldSet>
+                    <div className={"flex flex-col items-center"}>
+                        <p className={"m-5 text-sm font-inter text-center"}> already registered?&nbsp;
+                            <Link href={"/login"} className={"underline text-blue-700 font-semibold"}>
+                                sign in</Link>
+                        </p>
+                        <button onClick={() => form.handleSubmit(onSubmit)}
+                            className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>
+                            sign me up!
+                        </button>
+                    </div>
                 </form>
             </>
         );
