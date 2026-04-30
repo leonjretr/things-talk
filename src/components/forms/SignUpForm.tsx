@@ -32,7 +32,6 @@ const SignUpForm = () => {
         })
 
         const onSubmit = async (data: z.infer<typeof formSchema>) => {
-            console.log("submit pressed")
             const reg = await fetch("/api/register", {
                 method: "POST",
                 headers: {
@@ -45,7 +44,6 @@ const SignUpForm = () => {
                     surname: data.surname,
                 }),
             })
-            console.log("submit pressed 2")
             if (reg.status == 200) {
                 await signIn("credentials", {
                     email: data.email,
@@ -55,9 +53,7 @@ const SignUpForm = () => {
                 });
             }
         }
-        const {
-            register, handleSubmit, formState: {errors}
-        } = form
+        const {register, handleSubmit, formState: {errors}} = form;
 
         return (
             <>
@@ -85,7 +81,7 @@ const SignUpForm = () => {
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your password</FieldLabel>
-                                    <Input {...form.register("password")} className={"w-56"} placeholder={"qwerty"}
+                                    <Input {...form.register("password")} className={"w-56"} placeholder={"qwerty123"}
                                            required/>
                                     {errors.password && <FieldError>{errors.password.message}</FieldError>}
                                 </Field>
