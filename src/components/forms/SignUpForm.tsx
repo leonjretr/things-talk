@@ -15,8 +15,7 @@ const SignUpForm = () => {
             password: z
                 .string()
                 .min(7, "Sorry, your password is too short")
-                .includes("@#$")
-                .trim(),
+                .regex(/[@#$]/, "Must include @, # or $"),
             name: z.string().min(2, "Sorry, it seems you didn't include your name"),
             surname: z.string()
         })
@@ -40,12 +39,10 @@ const SignUpForm = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    data: {
-                        email: data.email,
-                        password: data.password,
-                        name: data.name,
-                        surname: data.surname,
-                    },
+                    email: data.email,
+                    password: data.password,
+                    name: data.name,
+                    surname: data.surname,
                 }),
             })
             console.log("submit pressed 2")
@@ -61,27 +58,29 @@ const SignUpForm = () => {
 
         return (
             <>
-                <form>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
                         <FieldGroup>
                             <div className={"flex gap-x-3 justify-center"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your name</FieldLabel>
-                                    <Input className={"w-56"} placeholder={"John"} required/>
+                                    <Input {...form.register("name")} className={"w-56"} placeholder={"John"} required/>
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your surname</FieldLabel>
-                                    <Input className={"w-56"} placeholder={"Doe"}/>
+                                    <Input {...form.register("surname")} className={"w-56"} placeholder={"Doe"}/>
                                 </Field>
                             </div>
                             <div className={"flex gap-x-3"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                                    <Input className={"w-56"} placeholder="johndoe@example.com" required/>
+                                    <Input {...form.register("email")} className={"w-56"} placeholder="johndoe@example.com"
+                                           required/>
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your password</FieldLabel>
-                                    <Input className={"w-56"} placeholder={"qwerty"} required/>
+                                    <Input {...form.register("password")} className={"w-56"} placeholder={"qwerty"}
+                                           required/>
                                 </Field>
                             </div>
                         </FieldGroup>
@@ -91,8 +90,8 @@ const SignUpForm = () => {
                             <Link href={"/login"} className={"underline text-blue-700 font-semibold"}>
                                 sign in</Link>
                         </p>
-                        <button onClick={() => form.handleSubmit(onSubmit)}
-                            className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>
+                        <button type={"submit"}
+                                className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>
                             sign me up!
                         </button>
                     </div>
