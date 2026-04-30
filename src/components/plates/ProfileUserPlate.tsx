@@ -1,7 +1,10 @@
 import React from 'react';
 import Image from "next/image";
+import {auth} from "@/app/lib/auth/server";
 
-const ProfileUserPlate = () => {
+const ProfileUserPlate = async () => {
+    const session = await auth();
+
     return (
         <div className={"px-10 pt-10"}>
             <div className={"flex justify-between w-full bg-brandTangerine p-5 rounded-2xl"}>
@@ -13,10 +16,13 @@ const ProfileUserPlate = () => {
                                width={"150"}/>
                     </div>
                     <div className={"flex flex-col text-white font-poppins mx-6"}>
-                        <div className={"text-5xl font-bold italic"}>hi, Leon</div>
+                        <div className={"text-5xl font-bold italic"}>hi, {session?.user?.name}</div>
                         {/*<div className={"text-3xl font-medium mt-1.5"}> Renowned author</div>*/}
                         <div className={"flex gap-x-3 items-center mt-1 text-lg font-medium"}>
                             <div>you&#39;ve got: 32 stories</div>
+                        </div>
+                        <div className={"flex gap-x-3 items-center mt-1 text-lg font-medium"}>
+                            <div>your email: {session?.user?.email}</div>
                         </div>
                     </div>
                 </div>

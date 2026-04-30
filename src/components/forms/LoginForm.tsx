@@ -1,10 +1,12 @@
 "use client"
 import React from 'react';
-import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
+import {Field, FieldError, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
 import * as z from "zod";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import Link from "next/link";
+import {signIn} from "next-auth/react";
 
 const LoginForm = () => {
 
@@ -26,24 +28,56 @@ const LoginForm = () => {
         }
     })
 
-    const onSubmit = (data: z.infer<typeof formSchema>) => {
-        console.log(data)
+    const onSubmit = async (data: z.infer<typeof formSchema>) => {
+        const log = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: data.email,
+                password: data.password,
+            }),
+        })
+        if (log.status == 200) {
+            await signIn("credentials", {
+                email: data.email,
+                password: data.password,
+                redirect: true,
+                callbackUrl: "/me",
+            });
+        }
     }
+
+    const {register, handleSubmit, formState: {errors}} = form;
+
     return (
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <FieldSet>
                 <FieldGroup>
                     <Field className={"max-w-48"}>
                         <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                        <Input/>
+                        <Input {...register("email")} placeholder={"johndoe@example.com"}/>
+                        {errors.email && <FieldError>{errors.email.message}</FieldError>}
                     </Field>
                     <Field className={"max-w-48 "}>
                         <FieldLabel className={"font-inter font-semibold"}>your
                             password</FieldLabel>
-                        <Input/>
+                        <Input {...register("password")} placeholder={"qwerty123"}/>
+                        {errors.password && <FieldError>{errors.password.message}</FieldError>}
                     </Field>
                 </FieldGroup>
             </FieldSet>
+            <h1 className={"text-sm text-ce font-inter mt-5"}> not registered?&nbsp;
+                <Link href={"/sign-up"} className={"underline text-blue-700 font-semibold"}>
+                    create an account</Link>
+            </h1>
+            <div className={"flex justify-center mt-2"}>
+                <button type={"submit"}
+                        className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>sign
+                    in!
+                </button>
+            </div>
         </form>
 
     );
