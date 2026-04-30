@@ -3,7 +3,7 @@ import React from 'react';
 import * as z from "zod";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
+import {Field, FieldError, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
 import {signIn} from "next-auth/react"
 import Link from "next/link";
@@ -11,7 +11,7 @@ import Link from "next/link";
 const SignUpForm = () => {
         const formSchema = z.object({
             email: z
-                .email("Sorry, it seems like your email address doesn't exist"),
+                .z.string().email("Sorry, it seems like your email address doesn't exist"),
             password: z
                 .string()
                 .min(7, "Sorry, your password is too short")
@@ -55,32 +55,39 @@ const SignUpForm = () => {
                 });
             }
         }
+        const {
+            register, handleSubmit, formState: {errors}
+        } = form
 
         return (
             <>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <FieldSet>
                         <FieldGroup>
                             <div className={"flex gap-x-3 justify-center"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your name</FieldLabel>
-                                    <Input {...form.register("name")} className={"w-56"} placeholder={"John"} required/>
+                                    <Input {...register("name")} className={"w-56"} placeholder={"John"} required/>
+                                    {errors.name && <FieldError>{errors.name.message}</FieldError>}
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your surname</FieldLabel>
-                                    <Input {...form.register("surname")} className={"w-56"} placeholder={"Doe"}/>
+                                    <Input {...register("surname")} className={"w-56"} placeholder={"Doe"}/>
+                                    {errors.surname && <FieldError>{errors.surname.message}</FieldError>}
                                 </Field>
                             </div>
                             <div className={"flex gap-x-3"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                                    <Input {...form.register("email")} className={"w-56"} placeholder="johndoe@example.com"
+                                    <Input {...register("email")} className={"w-56"} placeholder="johndoe@example.com"
                                            required/>
+                                    {errors.email && <FieldError>{errors.email.message}</FieldError>}
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your password</FieldLabel>
                                     <Input {...form.register("password")} className={"w-56"} placeholder={"qwerty"}
                                            required/>
+                                    {errors.password && <FieldError>{errors.password.message}</FieldError>}
                                 </Field>
                             </div>
                         </FieldGroup>
