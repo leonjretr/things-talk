@@ -12,7 +12,7 @@ const LoginForm = () => {
 
     const formSchema = z.object({
         email: z
-            .z.string().email("Sorry, it seems like your email address doesn't exist"),
+            .string().email("Sorry, it seems like your email address doesn't exist"),
         password: z
             .string()
             .min(7, "Sorry, your password is too short")
@@ -28,24 +28,17 @@ const LoginForm = () => {
     })
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        const log = await fetch("/api/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: data.email,
-                password: data.password,
-            }),
+        const log = await signIn("credentials", {
+            email: data.email,
+            password: data.password,
+            redirect: false,
         })
-        if (log.status == 200) {
-            await signIn("credentials", {
-                email: data.email,
-                password: data.password,
-                redirect: true,
-                callbackUrl: "/me",
-            });
+        if (log?.error) {
+            console.log(log.error)
+        } else {
+            window.location.href = "/me"
         }
+
     }
 
     const {register, handleSubmit, formState: {errors}} = form;
