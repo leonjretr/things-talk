@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from "next/link";
 import SignUpForm from "@/components/forms/SignUpForm";
 import {redirect} from "next/navigation";
 import {auth} from "@/app/lib/auth/server";
@@ -20,16 +19,6 @@ const Page = async () => {
                 </div>
                 <div className={""}>
                     <SignUpForm/>
-                    <div className={"flex flex-col items-center"}>
-                        <p className={"m-5 text-sm font-inter text-center"}> already registered?&nbsp;
-                            <Link href={"/login"} className={"underline text-blue-700 font-semibold"}>
-                                sign in</Link>
-                        </p>
-                        <button
-                            className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>
-                            sign me up!
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
