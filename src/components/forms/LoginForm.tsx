@@ -12,12 +12,11 @@ const LoginForm = () => {
 
     const formSchema = z.object({
         email: z
-            .email("Sorry, it seems like your email address doesn't exist"),
+            .z.string().email("Sorry, it seems like your email address doesn't exist"),
         password: z
             .string()
             .min(7, "Sorry, your password is too short")
-            .includes("@#$")
-            .trim(),
+            .regex(/[@#$]/, "Must include @, # or $"),
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
