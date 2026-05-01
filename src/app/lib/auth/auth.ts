@@ -33,12 +33,16 @@ export const authOptions: NextAuthOptions = {
                 const {email, password} = schema.parse(raw);
 
                 const user = await getUserWithPasswordByEmail(email)
+                console.log("LOGIN ATTEMPT", email)
+                console.log("USER", user)
+
                 if (!user) return null
 
                 const ok = await verifyPassword(password, user.passwordHash)
-                if (!ok) return null
 
-                return {id: user.id, email: user.email, name: user.name ?? null}
+                if (!ok) console.log("password problem: ", ok)
+
+                return {id: user.id, email: user.email, name: user.name}
             }
         })
     ],
@@ -46,11 +50,11 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async session({session, user}) {
             if (session.user) {
-                session.user.email = user.email;
-                session.user.name = user.name;
-                session.user.id = user.id;
+                session.user.id = user.id
+                session.user.email = user.email
+                session.user.name = user.name
             }
-            return session
+            return session;
         },
-    },
+    }
 }

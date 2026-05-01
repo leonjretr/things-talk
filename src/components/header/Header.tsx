@@ -1,4 +1,5 @@
 import React from 'react';
+export const dynamic = "force-dynamic"
 import LoginButton from "@/components/buttons/LoginButton";
 import SignUpButton from '../buttons/SignUpButton';
 import Link from "next/link";
@@ -44,3 +45,4 @@ const Header = async () => {
 };
 
 export default Header;
+
