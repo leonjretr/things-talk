@@ -14,7 +14,7 @@ const SignUpForm = () => {
                 .z.string().email("Sorry, it seems like your email address doesn't exist"),
             password: z
                 .string()
-                .min(7, "Sorry, your password is too short")
+                .min(8, "Sorry, your password is too short")
                 .regex(/[@#$]/, "Must include @, # or $"),
             name: z.string().min(2, "Sorry, it seems you didn't include your name"),
             surname: z.string()
@@ -28,7 +28,6 @@ const SignUpForm = () => {
                 name: "",
                 surname: ""
             }
-
         })
 
         const onSubmit = async (data: z.infer<typeof formSchema>) => {

@@ -15,7 +15,7 @@ const LoginForm = () => {
             .string().email("Sorry, it seems like your email address doesn't exist"),
         password: z
             .string()
-            .min(7, "Sorry, your password is too short")
+            .min(8, "Sorry, your password is too short")
             .regex(/[@#$]/, "Must include @, # or $"),
     })
 
@@ -31,12 +31,9 @@ const LoginForm = () => {
         const log = await signIn("credentials", {
             email: data.email,
             password: data.password,
-            redirect: true,
-            callbackUrl: "/",
+            redirect: false,
         })
-        if (log?.error) {
-            console.log(log.error + "error is in submit")
-        }
+        console.log("this is login output: " + log)
     }
 
     const {register, handleSubmit, formState: {errors}} = form;
