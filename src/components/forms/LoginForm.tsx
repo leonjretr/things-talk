@@ -31,14 +31,12 @@ const LoginForm = () => {
         const log = await signIn("credentials", {
             email: data.email,
             password: data.password,
-            redirect: false,
+            redirect: true,
+            callbackUrl: "/",
         })
         if (log?.error) {
-            console.log(log.error)
-        } else {
-            window.location.href = "/me"
+            console.log(log.error + "error is in submit")
         }
-
     }
 
     const {register, handleSubmit, formState: {errors}} = form;
