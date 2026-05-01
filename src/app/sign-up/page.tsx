@@ -2,6 +2,7 @@ import React from 'react';
 import SignUpForm from "@/components/forms/SignUpForm";
 import {redirect} from "next/navigation";
 import {auth} from "@/app/lib/auth/server";
+export const dynamic = "force-dynamic"
 
 const Page = async () => {
     const session = await auth();

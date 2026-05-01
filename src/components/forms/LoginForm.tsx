@@ -7,8 +7,11 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
+import { useRouter } from "next/navigation"
 
 const LoginForm = () => {
+
+    const router = useRouter()
 
     const formSchema = z.object({
         email: z
@@ -28,29 +31,32 @@ const LoginForm = () => {
     })
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        const log = await signIn("credentials", {
+        const result = await signIn("credentials", {
             email: data.email,
             password: data.password,
             redirect: false,
         })
-        console.log("this is login output: " + log)
+        if (!result?.error) {
+            router.refresh();
+            router.push("/me");
+        }
     }
 
-    const {register, handleSubmit, formState: {errors}} = form;
+    const {formState: {errors}} = form;
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
             <FieldSet>
                 <FieldGroup>
                     <Field className={"max-w-48"}>
                         <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                        <Input {...register("email")} placeholder={"johndoe@example.com"}/>
+                        <Input {...form.register("email")} placeholder={"johndoe@example.com"}/>
                         {errors.email && <FieldError>{errors.email.message}</FieldError>}
                     </Field>
                     <Field className={"max-w-48 "}>
                         <FieldLabel className={"font-inter font-semibold"}>your
                             password</FieldLabel>
-                        <Input {...register("password")} placeholder={"qwerty123"}/>
+                        <Input {...form.register("password")} placeholder={"qwerty123"}/>
                         {errors.password && <FieldError>{errors.password.message}</FieldError>}
                     </Field>
                 </FieldGroup>

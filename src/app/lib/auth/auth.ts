@@ -37,31 +37,24 @@ export const authOptions: NextAuthOptions = {
                 console.log("USER", user)
 
                 if (!user) return null
-                const ok = await verifyPassword(password, user.passwordHash)
-                if (!ok) return null
 
-                return {id: user.id, email: user.email, name: user.name ?? null}
+                const ok = await verifyPassword(password, user.passwordHash)
+
+                if (!ok) console.log("password problem: ", ok)
+
+                return {id: user.id, email: user.email, name: user.name}
             }
         })
     ],
 
     callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.id = user.id
-                token.email = user.email
-                token.name = user.name
-            }
-            return token
-        },
-
-        async session({ session, token }) {
+        async session({session, user}) {
             if (session.user) {
-                session.user.id = token.id as string
-                session.user.email = token.email
-                session.user.name = token.name
+                session.user.id = user.id
+                session.user.email = user.email
+                session.user.name = user.name
             }
-            return session
+            return session;
         },
     }
 }

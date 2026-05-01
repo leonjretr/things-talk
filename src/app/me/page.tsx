@@ -3,6 +3,7 @@ import {auth} from "@/app/lib/auth/server";
 import {redirect} from 'next/navigation';
 import ProfileUserPlate from '@/components/plates/ProfileUserPlate';
 import ProfileNavPlate from '@/components/plates/ProfileNavPlate';
+export const dynamic = "force-dynamic"
 
 const Page = async () => {
     const session = await auth();

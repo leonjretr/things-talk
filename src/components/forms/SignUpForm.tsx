@@ -10,8 +10,7 @@ import Link from "next/link";
 
 const SignUpForm = () => {
         const formSchema = z.object({
-            email: z
-                .z.string().email("Sorry, it seems like your email address doesn't exist"),
+            email: z.string().email("Sorry, it seems like your email address doesn't exist"),
             password: z
                 .string()
                 .min(8, "Sorry, your password is too short")
@@ -44,37 +43,40 @@ const SignUpForm = () => {
                 }),
             })
             if (reg.status == 200) {
-                await signIn("credentials", {
+                const result = await signIn("credentials", {
                     email: data.email,
                     password: data.password,
-                    redirect: true,
-                    callbackUrl: "/me",
+                    redirect: false,
+                    // callbackUrl: "/me",
                 });
+                if (!result?.error) {
+                    window.location.href = "/me"
+                }
             }
         }
-        const {register, handleSubmit, formState: {errors}} = form;
+        const {formState: {errors}} = form;
 
         return (
             <>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
                         <FieldGroup>
                             <div className={"flex gap-x-3 justify-center"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your name</FieldLabel>
-                                    <Input {...register("name")} className={"w-56"} placeholder={"John"} required/>
+                                    <Input {...form.register("name")} className={"w-56"} placeholder={"John"} required/>
                                     {errors.name && <FieldError>{errors.name.message}</FieldError>}
                                 </Field>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your surname</FieldLabel>
-                                    <Input {...register("surname")} className={"w-56"} placeholder={"Doe"}/>
+                                    <Input {...form.register("surname")} className={"w-56"} placeholder={"Doe"}/>
                                     {errors.surname && <FieldError>{errors.surname.message}</FieldError>}
                                 </Field>
                             </div>
                             <div className={"flex gap-x-3"}>
                                 <Field>
                                     <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                                    <Input {...register("email")} className={"w-56"} placeholder="johndoe@example.com"
+                                    <Input {...form.register("email")} className={"w-56"} placeholder="johndoe@example.com"
                                            required/>
                                     {errors.email && <FieldError>{errors.email.message}</FieldError>}
                                 </Field>
