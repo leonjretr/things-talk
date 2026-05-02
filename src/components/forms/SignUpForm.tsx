@@ -52,6 +52,7 @@ const SignUpForm = () => {
                 if (!result?.error) {
                     window.location.href = "/me"
                 }
+
             }
         }
         const {formState: {errors}} = form;
