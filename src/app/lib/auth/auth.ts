@@ -11,7 +11,7 @@ import {env} from "@/lib/env"
 export const authOptions: NextAuthOptions = {
     adapter: DrizzleAdapter(db),
 
-    session: {strategy: "database"},
+    session: {strategy: "jwt"},
 
     providers: [
         GitHub({
@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
             async authorize(raw) {
                 const schema = z.object({
                     email: z.string().email(),
-                    password: z.string().min(8)
+                    password: z.string().min(8).regex(/[@#$]/)
                 })
 
                 const {email, password} = schema.parse(raw);
@@ -48,11 +48,19 @@ export const authOptions: NextAuthOptions = {
     ],
 
     callbacks: {
-        async session({session, user}) {
+        async jwt({token, user}) {
+            if (user) {
+                token.id = user.id
+                token.email = user.email
+                token.name = user.name
+            }
+            return token;
+        },
+        async session({session, token}) {
             if (session.user) {
-                session.user.id = user.id
-                session.user.email = user.email
-                session.user.name = user.name
+                session.user.id = token.id as string
+                session.user.email = token.email as string
+                session.user.name = token.name as string
             }
             return session;
         },
