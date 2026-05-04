@@ -7,11 +7,8 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
-import { useRouter } from "next/navigation"
 
 const LoginForm = () => {
-
-    const router = useRouter()
 
     const formSchema = z.object({
         email: z
@@ -31,15 +28,16 @@ const LoginForm = () => {
     })
 
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        const result = await signIn("credentials", {
+        await signIn("credentials", {
             email: data.email,
             password: data.password,
-            redirect: false,
+            redirect: true,
+            callbackUrl: "/me"
         })
-        if (!result?.error) {
-            router.refresh();
-            router.push("/me");
-        }
+        // if (!result?.error) {
+        //     router.refresh();
+        //     router.push("/me");
+        // }
     }
 
     const {formState: {errors}} = form;

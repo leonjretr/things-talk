@@ -33,8 +33,8 @@ export const authOptions: NextAuthOptions = {
                 const {email, password} = schema.parse(raw);
 
                 const user = await getUserWithPasswordByEmail(email)
-                console.log("LOGIN ATTEMPT", email)
-                console.log("USER", user)
+                // console.log("LOGIN ATTEMPT", email)
+                // console.log("USER", user)
 
                 if (!user) return null
 

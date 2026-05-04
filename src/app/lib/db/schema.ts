@@ -64,4 +64,5 @@ export const memories = pgTable("memory", {
     emotions: text("emotion"),
     people: text("people"),
     description: text("description"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
 })
