@@ -15,6 +15,7 @@ const Page = ({params}: { params: Promise<{ memory: string }> }) => {
             <div className={"flex mx-10 my-5"}>
                 <div className={"font-poppins"}>
                     I dreamt about it all night...
+
                 </div>
             </div>
         </div>
