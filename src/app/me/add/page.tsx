@@ -13,7 +13,7 @@ const Page = async () => {
             <AddMemoryForm/>
             {/*<div className={"flex font-poppins text-xs text-center pt-5 font-medium italic text-brandWalnut"}>*/}
             {/*    people come and go, things are bought and lost, <br/>*/}
-            {/*    yet memories endure, unyielding as a stone<br/>*/}
+            {/*    yet my-memories endure, unyielding as a stone<br/>*/}
             {/*    that rush of pride in the first car dad helped to choose -<br/>*/}
             {/*    engine hum, leather scent and childlike joy<br/>*/}
             {/*    the scrutiny in mum&#39;s eyes as she toured through uni halls,<br/>*/}

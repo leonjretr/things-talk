@@ -6,15 +6,16 @@ import Link from "next/link";
 interface ObjectMemoryCardProps {
     title: string;
     description: string;
+    id: string;
 }
 
-const ObjectMemoryCard = ({title, description}: ObjectMemoryCardProps) => {
+const ObjectMemoryCard = ({title, description, id}: ObjectMemoryCardProps) => {
 
     // создаёшь блок с карточками всех историй на главной странице, там фетчишь и сюда
     // и сюда передаёшь через пропсы
 
     return (
-        <Link href={`/memory/${title.toLowerCase().replaceAll(" ", "-").trim()}`} className={""}>
+        <Link href={`/memories/${id}`} className={""}>
             <motion.div
                 whileHover={{scale: 1.1}}
                 className={"flex flex-col justify-center cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
