@@ -1,11 +1,9 @@
-"use client"
-import {motion} from 'motion/react';
 import React from 'react';
 import Link from "next/link";
 
 interface ObjectMemoryCardProps {
-    title: string;
-    description: string;
+    title: string | null;
+    description: string | null;
     id: string;
 }
 
@@ -16,8 +14,7 @@ const ObjectMemoryCard = ({title, description, id}: ObjectMemoryCardProps) => {
 
     return (
         <Link href={`/memories/${id}`} className={""}>
-            <motion.div
-                whileHover={{scale: 1.1}}
+            <div
                 className={"flex flex-col justify-center cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
                 <div className={"font-semibold text-lg"}>
                     {title}
@@ -25,7 +22,7 @@ const ObjectMemoryCard = ({title, description, id}: ObjectMemoryCardProps) => {
                 <div className={"text-sm"}>
                     {description}
                 </div>
-            </motion.div>
+            </div>
         </Link>
     )
         ;
