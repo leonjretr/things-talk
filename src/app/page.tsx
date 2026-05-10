@@ -38,7 +38,7 @@ export default function Home() {
                 {/*    <p>*/}
                 {/*        The idea is quite simple – to revive the spiritless. Let the person make notes about things*/}
                 {/*        that*/}
-                {/*        surround them, that are precious, that carry memories, that carry life – life that is not seen*/}
+                {/*        surround them, that are precious, that carry my-memories, that carry life – life that is not seen*/}
                 {/*        by*/}
                 {/*        others. And let others see it, feel it, touch it.*/}
                 {/*    </p>*/}

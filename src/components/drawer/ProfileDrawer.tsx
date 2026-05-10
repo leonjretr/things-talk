@@ -16,7 +16,7 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
 
     const buttons = [
         {name: "profile", icon: <FaRegUserCircle/>, toLink: "/me"},
-        {name: "memories", icon: <GiBookshelf/>, toLink: "/me/memories"},
+        {name: "memories", icon: <GiBookshelf/>, toLink: "/me/my-memories"},
         {name: "favourites", icon: <FaHeart/>, toLink: "/me/favourites"},
     ];
 

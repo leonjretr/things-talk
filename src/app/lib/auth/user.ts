@@ -50,3 +50,8 @@ export async function getUserWithPasswordByEmail(email: string | null) {
 export async function verifyPassword(password: string, passwordHash: string) {
     return bcrypt.compare(password, passwordHash)
 }
+
+export async function getUserNameById(userId: string) {
+    const rows = await db.select({name: users.name, surname: users.surname}).from(users).where(eq(users.id, userId)).limit(2);
+    return rows[0] ?? null;
+}

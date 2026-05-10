@@ -1,3 +1,4 @@
+import "server-only"
 import {db} from "@/app/lib/db";
 import {desc} from "drizzle-orm";
 import {memories} from "@/app/lib/db/schema";
