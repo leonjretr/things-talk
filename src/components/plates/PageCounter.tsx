@@ -8,8 +8,9 @@ interface PageCounterProps {
 }
 
 const PageCounter = async ({currentPage}: PageCounterProps) => {
-    const totalPages = await getTotalMemories();
-    if (Number(totalPages) == 0 || !totalPages) return notFound();
+    const totalMemories = await getTotalMemories();
+    const totalPages = Number(totalMemories) / 10;
+    if (totalPages == 0 || !totalPages) return notFound();
     let start = Math.max(1, currentPage - 2);
     const end = Math.min(Number(totalPages), start + 4);
     if (end - start < 4) {
