@@ -20,10 +20,14 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
     const pageArray = Array.from({length: 5}, (_, i) => start + i);
 
     return (
-        <div className={"flex items-center"}>
-            <div><FaArrowLeft/></div>
-            <div></div>
-            <div><FaArrowRight/></div>
+        <div className={"flex items-center gap-x-3"}>
+            <button className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowLeft/></button>
+            <div className={"flex items-center justify-center gap-x-1"}>
+                {pageArray.map((page, index) => (
+                    <button className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md ${index == 2 ? "bg-brandWalnut text-brandLightgold scale-90" : "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut"}`} key={index}>{page}</button>
+                ))}
+            </div>
+            <button className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowRight/></button>
         </div>
     );
 };
