@@ -5,11 +5,12 @@ import ObjectMemoryCard from "@/components/cards/ObjectMemoryCard";
 import {notFound} from 'next/navigation';
 import PageCounter from "@/components/plates/PageCounter";
 
-const Page = async ({searchParams}: { searchParams: { page?: string } }) => {
+const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }) => {
     // страница всех меморисов. здесь будет поиск, здесь будет сортировка
-    const page = Number(searchParams.page ?? "1");
+    const {page} = await searchParams;
+    const currentPage = Number(page ?? "1");
     const fetchLimit = 10;
-    const memories = await getMemoriesPaginated(page, fetchLimit, desc);
+    const memories = await getMemoriesPaginated(currentPage, fetchLimit, desc);
     return (
         <div className={"min-h-screen flex flex-col items-center"}>
             {memories.length === 0 ?
@@ -19,7 +20,7 @@ const Page = async ({searchParams}: { searchParams: { page?: string } }) => {
                 ))}
 
             <div className={"m-10"}>
-                <PageCounter currentPage={7}/>
+                <PageCounter currentPage={currentPage}/>
             </div>
         </div>
     );

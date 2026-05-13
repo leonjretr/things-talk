@@ -6,7 +6,8 @@ import {GiBookshelf} from "react-icons/gi";
 import DrawerStore from '@/stores/DrawerStore';
 import {observer} from "mobx-react";
 import SignOutButton from "@/components/buttons/SignOutButton";
-
+import {GiLoveLetter} from "react-icons/gi";
+import {BiSolidBookAdd} from "react-icons/bi";
 
 interface ProfileDrawerProps {
     name: string;
@@ -16,7 +17,9 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
 
     const buttons = [
         {name: "profile", icon: <FaRegUserCircle/>, toLink: "/me"},
-        {name: "memories", icon: <GiBookshelf/>, toLink: "/me/my-memories"},
+        {name: "new memory", icon: <BiSolidBookAdd/>, toLink: "/me/add"},
+        {name: "your memories", icon: <GiBookshelf/>, toLink: "/me/my-memories"},
+        {name: "people's memories", icon: <GiLoveLetter/>, toLink: "/memories"},
         {name: "favourites", icon: <FaHeart/>, toLink: "/me/favourites"},
     ];
 
