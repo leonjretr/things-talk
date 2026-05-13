@@ -6,6 +6,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Field, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+import {FaPaperPlane} from "react-icons/fa";
 
 const AddMemoryForm = () => {
     const formSchema = z.object({
@@ -41,69 +42,80 @@ const AddMemoryForm = () => {
         // Do something with the form values.
         console.log(data)
     }
+
     return (
-        <div className={"flex justify-center"}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FieldGroup>
-                    <FieldSet>
-                        <div className={"flex justify-center items-center"}>
-                            <FieldLegend className={"font-inter font-bold text-2xl"}>
-                                Add your memory. Perpetuate it. Be an interpreter.
-                            </FieldLegend>
-                        </div>
-                        <FieldGroup>
-                            <div className="flex gap-5 w-full">
-                                <Controller name={"title"} control={form.control} render={({field, fieldState}) => (
-                                    <Field className={"w-80 shrink-0"}>
-                                        <FieldLabel className={"font-inter font-semibold"}>what is that
-                                            thing?</FieldLabel>
-                                        <Input {...field} id={"title"} placeholder={"a book"}/>
-                                        {fieldState.invalid && (<FieldError errors={[fieldState.error]}/>)}
-                                    </Field>
-                                )}/>
-                                <Controller name={"emotions"} control={form.control}
-                                            render={({field, fieldState}) => (
-                                                <Field className={"w-80 shrink-0"}>
-                                                    <FieldLabel className={"font-inter font-semibold"}>describe
-                                                        what do you feel thinking about it?</FieldLabel>
-                                                    <Input {...field} id={"emotions"}
-                                                           placeholder={"joy, loneliness, nostalgia"}/>
-                                                    {fieldState.invalid && (
-                                                        <FieldError errors={[fieldState.error]}/>)}
-                                                </Field>
-                                            )}/>
+        <div className="flex justify-center">
+            <div className="w-full rounded-2xl bg-white p-8 m-5 shadow-sm border">
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <FieldGroup>
+                        <FieldSet>
+                            <div className={"flex justify-center items-center"}>
+                                <FieldLegend className={"text-xl font-semibold font-inter tracking-tight text-neutral-900"}>
+                                    Add your memory. Perpetuate it. Be an interpreter.
+                                </FieldLegend>
                             </div>
-                            <div className={"flex gap-5 w-full"}>
-                                <Controller name={"people"} control={form.control}
-                                            render={({field, fieldState}) => (
-                                                <Field className={"w-80 shrink-0"}>
-                                                    <FieldLabel className={"font-inter font-semibold"}>who makes it
-                                                        special? </FieldLabel>
-                                                    <Input {...field} id={"people"}
-                                                           placeholder={"dad, mom, or yourself"}/>
-                                                    {fieldState.invalid && (
-                                                        <FieldError errors={[fieldState.error]}/>)}
-                                                </Field>
-                                            )}/>
-                                <Controller name={"memory"} control={form.control}
-                                            render={({field, fieldState}) => (
-                                                <Field
-                                                    className={"w-80 shrink-0"}>
-                                                    <FieldLabel
-                                                        className={"font-inter font-semibold w-full break-keep"}>time
-                                                        has
-                                                        come. i&#39;ll let you unfold the story</FieldLabel>
-                                                    <Textarea {...field}
-                                                              id={"memory"} placeholder={"once upon a time..."}/>
-                                                    {fieldState.invalid && (
-                                                        <FieldError errors={[fieldState.error]}/>)}
-                                                </Field>
-                                            )}/>
-                            </div>
-                        </FieldGroup>
-                    </FieldSet>
-                </FieldGroup>
-            </form>
+                            <FieldGroup>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <Controller name={"title"} control={form.control} render={({field, fieldState}) => (
+                                        <Field className={"w-80 shrink-0"}>
+                                            <FieldLabel className={"font-inter font-semibold"}>what is that
+                                                thing?</FieldLabel>
+                                            <Input {...field} id={"title"} placeholder={"a book"}/>
+                                            {fieldState.invalid && (<FieldError errors={[fieldState.error]}/>)}
+                                        </Field>
+                                    )}/>
+                                    <Controller name={"emotions"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field className={"w-80 shrink-0"}>
+                                                        <FieldLabel className={"font-inter font-semibold"}>describe
+                                                            what do you feel thinking about it?</FieldLabel>
+                                                        <Input {...field} id={"emotions"}
+                                                               placeholder={"joy, loneliness, nostalgia"}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
+                                </div>
+                                <div className={"grid grid-cols-1 md:grid-cols-2 gap-6"}>
+                                    <Controller name={"people"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field className={"w-80 shrink-0"}>
+                                                        <FieldLabel className={"font-inter font-semibold"}>who makes it
+                                                            special? </FieldLabel>
+                                                        <Input {...field} id={"people"}
+                                                               placeholder={"dad, mom, or yourself"}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
+                                    <Controller name={"memory"} control={form.control}
+                                                render={({field, fieldState}) => (
+                                                    <Field
+                                                        className={"w-80 shrink-0"}>
+                                                        <FieldLabel
+                                                            className={"font-inter font-semibold w-full break-keep"}>time
+                                                            has
+                                                            come. i&#39;ll let you unfold the story</FieldLabel>
+                                                        <Textarea {...field}
+                                                                  id={"memory"} placeholder={"once upon a time..."}/>
+                                                        {fieldState.invalid && (
+                                                            <FieldError errors={[fieldState.error]}/>)}
+                                                    </Field>
+                                                )}/>
+                                </div>
+                            </FieldGroup>
+                        </FieldSet>
+                    </FieldGroup>
+                    <div className="pt-6 flex justify-end">
+                        <button
+                            type="submit"
+                            className="flex items-center gap-x-2 px-5 py-2.5 rounded-lg font-poppins text-brandWalnut border-2 border-brandWalnut hover:bg-brandWalnut hover:text-white hover:opacity-90 transition-colors"
+                        >
+                            <FaPaperPlane/> save memory
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

@@ -9,7 +9,7 @@ const Page = async () => {
         redirect("/login");
     }
     return (
-        <div className={"flex flex-col items-center pt-7 min-h-screen bg-white overflow-visible"}>
+        <div className={"flex flex-col items-center min-h-screen bg-white overflow-visible"}>
             <AddMemoryForm/>
             {/*<div className={"flex font-poppins text-xs text-center pt-5 font-medium italic text-brandWalnut"}>*/}
             {/*    people come and go, things are bought and lost, <br/>*/}
