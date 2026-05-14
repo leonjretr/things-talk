@@ -49,10 +49,13 @@ const AddMemoryForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldGroup>
                         <FieldSet>
-                            <div className={"flex justify-center items-center"}>
-                                <FieldLegend className={"text-xl font-semibold font-inter tracking-tight text-neutral-900"}>
+                            <div className={"flex flex-col leading-none justify-center items-center font-inter"}>
+                                <FieldLegend className={"text-xl font-semibold  tracking-tight text-neutral-900 leading-3"}>
                                     Add your memory. Perpetuate it. Be an interpreter.
                                 </FieldLegend>
+                                <p className="text-sm text-neutral-500 leading-3">
+                                    Describe something meaningful. This will become part of your archive.
+                                </p>
                             </div>
                             <FieldGroup>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
