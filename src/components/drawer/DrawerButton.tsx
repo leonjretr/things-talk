@@ -11,7 +11,7 @@ const DrawerButton = ({name, icon, toLink}: DrawerButtonProps) => {
         <>
             <li>
                 <a href={`${toLink}`}
-                   className="flex items-center p-2 text-brandCoffee rounded-lg dark:text-white hover:bg-brandCoffee hover:text-white dark:hover:bg-gray-700 group">
+                   className="flex items-center p-2 text-brandCoffee rounded-lg dark:text-white hover:bg-brandCoffee hover:text-white dark:hover:bg-gray-700 group transition-colors">
                     <div className={"text-xl hover:text-white"}>{icon}</div>
                     <span className="ms-3 font-poppinsFont ">{name}</span>
                 </a>

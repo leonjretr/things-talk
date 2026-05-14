@@ -2,6 +2,7 @@ import React from 'react';
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {getTotalMemories} from "@/app/lib/auth/memories";
 import {notFound} from "next/navigation";
+import Link from 'next/link';
 
 interface PageCounterProps {
     currentPage: number;
@@ -21,13 +22,17 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
 
     return (
         <div className={"flex items-center gap-x-3"}>
-            <button className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowLeft/></button>
+            <Link href={`/memories?page=${currentPage - 1}`}
+                  className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowLeft/></Link>
             <div className={"flex items-center justify-center gap-x-1"}>
                 {pageArray.map((page, index) => (
-                    <button className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md ${index == 2 ? "bg-brandWalnut text-brandLightgold scale-90" : "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut"}`} key={index}>{page}</button>
+                    <Link href={`/memories?page=${page}`}
+                          className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md ${index == 2 ? "bg-brandWalnut text-brandLightgold scale-90" : "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut"}`}
+                          key={index}>{page}</Link>
                 ))}
             </div>
-            <button className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowRight/></button>
+            <Link href={`/memories?page=${currentPage + 1}`}
+                  className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowRight/></Link>
         </div>
     );
 };
