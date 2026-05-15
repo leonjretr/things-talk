@@ -40,6 +40,7 @@ const AddMemoryForm = () => {
 
     function onSubmit(data: z.infer<typeof formSchema>) {
         // Do something with the form values.
+        // submit data
         console.log(data)
     }
 
