@@ -4,6 +4,7 @@ import "./globals.css"
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { Providers } from "./providers";
+import {Toaster} from "react-hot-toast";
 
 export const metadata: Metadata = {
     title: "things really do talk",
@@ -22,6 +23,7 @@ export default function RootLayout({children,}: Readonly<{
         <body className={"antialiased"}>
         {/*<Wrapper>*/}
         {/*</Wrapper>*/}
+        <div><Toaster/></div>
         <Header/>
         <Providers>{children}</Providers>
         <Footer/>

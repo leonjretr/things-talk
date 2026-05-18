@@ -7,6 +7,8 @@ import {Field, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet} from "
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {FaPaperPlane} from "react-icons/fa";
+import {createMemory} from "@/app/lib/actions/memories";
+import toast from "react-hot-toast";
 
 const AddMemoryForm = () => {
     const formSchema = z.object({
@@ -38,9 +40,14 @@ const AddMemoryForm = () => {
         }
     })
 
+
     function onSubmit(data: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        console.log(data)
+        const result = createMemory(data);
+        toast.promise(result, {
+            loading: "Give us a second, your memory is being created...💿",
+            success: "Excellent!🤩 Memory has been created!",
+            error: "Ooops..😱 Something went wrong, please try again",
+        })
     }
 
     return (
@@ -50,7 +57,8 @@ const AddMemoryForm = () => {
                     <FieldGroup>
                         <FieldSet>
                             <div className={"flex flex-col leading-none justify-center items-center font-inter"}>
-                                <FieldLegend className={"text-xl font-semibold  tracking-tight text-neutral-900 leading-3"}>
+                                <FieldLegend
+                                    className={"text-xl font-semibold  tracking-tight text-neutral-900 leading-3"}>
                                     Add your memory. Perpetuate it. Be an interpreter.
                                 </FieldLegend>
                                 <p className="text-sm text-neutral-500 leading-3">
