@@ -9,8 +9,11 @@ import {Textarea} from "@/components/ui/textarea";
 import {FaPaperPlane} from "react-icons/fa";
 import {createMemory} from "@/app/lib/actions/memories";
 import toast from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 const AddMemoryForm = () => {
+    const router = useRouter();
+
     const formSchema = z.object({
         title: z
             .string()
@@ -47,6 +50,9 @@ const AddMemoryForm = () => {
             loading: "Give us a second, your memory is being created...💿",
             success: "Excellent!🤩 Memory has been created!",
             error: "Ooops..😱 Something went wrong, please try again",
+        }).then(() => {
+            router.refresh();
+            router.push("/me/memories")
         })
     }
 
