@@ -31,7 +31,8 @@ export async function getMemoriesPaginated(page: number, limit: number, orderFn 
 }
 
 export async function getTotalMemories() {
-    return db.select({
+    const [result] = await db.select({
         count: count()
     }).from(memories);
+    return Number(result?.count);
 }

@@ -11,15 +11,15 @@ export async function createMemory(data: {
     memory: string,
 }) {
     const session = await auth();
-    if (session && session.user) {
-        await db.insert(memories).values({
-            userId: session.user.id,
-            objectName: data.title,
-            emotions: data.emotions,
-            people: data.people,
-            description: data.memory
-        });
-    } else if (!session) {
+    if (!session || !session.user) {
         throw new Error("Unauthorized")
     }
+
+    await db.insert(memories).values({
+        userId: session.user.id,
+        objectName: data.title,
+        emotions: data.emotions,
+        people: data.people,
+        description: data.memory
+    });
 }

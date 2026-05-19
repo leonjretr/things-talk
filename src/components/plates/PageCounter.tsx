@@ -13,11 +13,10 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
     const totalPages = Number(totalMemories) / 10;
     if (totalPages == 0 || !totalPages) return notFound();
     let start = Math.max(1, currentPage - 2);
-    const end = Math.min(Number(totalPages), start + 4);
+    const end = Math.min(totalPages, start + 4);
     if (end - start < 4) {
         start = Math.max(1, end - 4);
     }
-    console.log("total pages: " + Number(totalPages));
     const pageArray = Array.from({length: 5}, (_, i) => start + i);
 
     return (

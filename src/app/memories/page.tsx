@@ -8,18 +8,19 @@ import PageCounter from "@/components/plates/PageCounter";
 const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }) => {
     // страница всех меморисов. здесь будет поиск, здесь будет сортировка
     const {page} = await searchParams;
+    console.log("this is page from params: " + page);
     const currentPage = Number(page ?? "1");
     const fetchLimit = 10;
     const memories = await getMemoriesPaginated(currentPage, fetchLimit, desc);
     return (
-        <div className={"min-h-screen flex flex-col items-center"}>
+        <div className={"min-h-screen flex flex-col items-center justify-between m-10"}>
             {memories.length === 0 ?
                 notFound() : memories?.map((memory) => (
                     <ObjectMemoryCard key={memory.id} title={memory.objectName} id={memory.id}
                                       description={memory.description}/>
                 ))}
 
-            <div className={"m-10"}>
+            <div className={"flex justify-end m-10"}>
                 <PageCounter currentPage={currentPage}/>
             </div>
         </div>
