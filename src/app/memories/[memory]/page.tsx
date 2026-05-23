@@ -1,6 +1,6 @@
 import React from 'react';
-import {getMemoryById} from "@/app/lib/auth/memories";
-import {getUserNameById} from "@/app/lib/auth/user";
+import {getMemoryById} from "@/app/lib/actions/memories";
+import {getUserNameById} from "@/app/lib/actions/user";
 import {notFound} from 'next/navigation';
 
 const Page = async ({params}: { params: Promise<{ memoryId: string }> }) => {

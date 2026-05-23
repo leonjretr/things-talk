@@ -4,7 +4,7 @@ import GitHub from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import {DrizzleAdapter} from "@auth/drizzle-adapter"
 import {db} from "../db/index"
-import {getUserWithPasswordByEmail, verifyPassword} from "../auth/user"
+import {getUserWithPasswordByEmail, verifyPassword} from "../actions/user"
 import {z} from "zod"
 import {env} from "@/lib/env"
 

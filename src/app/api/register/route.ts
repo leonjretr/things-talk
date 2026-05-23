@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server"
 import {z} from "zod"
-import {createUserWithPassword, getUserByEmail} from "@/app/lib/auth/user"
+import {createUserWithPassword, getUserByEmail} from "@/app/lib/actions/user"
 
 const schema = z.object({
     email: z.string().email(),
