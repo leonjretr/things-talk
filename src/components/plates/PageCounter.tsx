@@ -1,6 +1,6 @@
 import React from 'react';
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {getTotalMemories} from "@/app/lib/auth/memories";
+import {getTotalMemories} from "@/app/lib/actions/memories";
 import {notFound} from "next/navigation";
 import Link from 'next/link';
 
@@ -18,6 +18,8 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
         start = Math.max(1, end - 4);
     }
     const pageArray = Array.from({length: 5}, (_, i) => start + i);
+    const currentPageColor = "bg-brandWalnut text-white scale-90";
+    const otherPagesColor = "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut";
 
     return (
         <div className={"flex items-center gap-x-3"}>
@@ -26,7 +28,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
             <div className={"flex items-center justify-center gap-x-1"}>
                 {pageArray.map((page, index) => (
                     <Link href={`/memories?page=${page}`}
-                          className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md ${index == 2 ? "bg-brandWalnut text-brandLightgold scale-90" : "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut"}`}
+                          className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md text-brandLightgold ${index == 2 && currentPage > 2 ? currentPageColor : otherPagesColor} ${currentPage<2 && currentPage==index+1 ? currentPageColor : otherPagesColor}`}
                           key={index}>{page}</Link>
                 ))}
             </div>

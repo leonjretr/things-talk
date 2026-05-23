@@ -1,5 +1,5 @@
 import "server-only"
-import {db} from "../db/index"
+import {db} from "../db"
 import {users, credentials} from "../db/schema"
 import {eq} from "drizzle-orm"
 import bcrypt from "bcryptjs"
