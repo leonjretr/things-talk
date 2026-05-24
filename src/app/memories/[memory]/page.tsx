@@ -1,5 +1,5 @@
 import React from 'react';
-import {getMemoryById} from "@/app/lib/actions/memories";
+import {getMemoryById} from "@/app/lib/actions/memory-queries";
 import {getUserNameById} from "@/app/lib/actions/user";
 import {notFound} from 'next/navigation';
 

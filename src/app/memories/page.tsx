@@ -1,5 +1,5 @@
 import React from 'react';
-import {getMemoriesPaginated} from "@/app/lib/actions/memories";
+import {getMemoriesPaginated} from "@/app/lib/actions/memory-queries";
 import {desc} from "drizzle-orm";
 import ObjectMemoryCard from "@/components/cards/ObjectMemoryCard";
 import {notFound} from 'next/navigation';

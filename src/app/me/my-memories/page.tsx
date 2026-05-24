@@ -3,7 +3,7 @@ import React from 'react';
 import ProfileNavPlate from "@/components/plates/ProfileNavPlate";
 import {auth} from "@/app/lib/auth/server";
 import {redirect} from "next/navigation";
-import {getMemoriesByUserPaginated} from "@/app/lib/actions/memories";
+import {getMemoriesByUserPaginated} from "@/app/lib/actions/memory-queries";
 import {desc} from "drizzle-orm";
 import ObjectMemoryCard from "@/components/cards/ObjectMemoryCard";
 
