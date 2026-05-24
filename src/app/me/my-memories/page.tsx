@@ -25,12 +25,15 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
             <div className={"flex justify-center my-5 text-xl"}>
                 <ProfileNavPlate activeTab={"memories"}/>
             </div>
-            {memories.length === 0 ?
-                <div> Sorry, you do not have any published memories at the moment</div> : memories?.map((memory) => (
-                    <ObjectMemoryCard key={memory.id} title={memory.objectName} id={memory.id}
-                                      description={memory.description}/>
+            <div className={"grid grid-cols-2 justify-center gap-y-3 m-5"}>
+                {memories.length === 0 ?
+                    <div> Sorry, you do not have any published memories at the moment</div> : memories?.map((memory) => (
+                        <ObjectMemoryCard key={memory.id} title={memory.objectName} id={memory.id}
+                                          description={memory.description}/>
 
-                ))}
+                    ))}
+            </div>
+
         </div>
     );
 };
