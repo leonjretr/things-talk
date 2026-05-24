@@ -1,6 +1,6 @@
 import React from 'react';
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {getTotalMemories} from "@/app/lib/actions/memories";
+import {getTotalMemories} from "@/app/lib/actions/memory-queries";
 import {notFound} from "next/navigation";
 import Link from 'next/link';
 

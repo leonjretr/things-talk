@@ -7,7 +7,7 @@ import {Field, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet} from "
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {FaPaperPlane} from "react-icons/fa";
-import {createMemory} from "@/app/lib/actions/memories";
+import {createMemory} from "@/app/lib/actions/memory-actions";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
 
