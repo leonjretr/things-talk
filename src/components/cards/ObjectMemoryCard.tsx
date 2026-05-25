@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from "next/link";
+import {FaRegHeart} from "react-icons/fa";
+import {FaHeart} from "react-icons/fa";
 
 interface ObjectMemoryCardProps {
     title: string | null;
@@ -13,17 +15,21 @@ const ObjectMemoryCard = ({title, description, id}: ObjectMemoryCardProps) => {
     // и сюда передаёшь через пропсы
 
     return (
-        <Link href={`/memories/${id}`} className={""}>
             <div
-                className={"flex flex-col justify-center cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
-                <div className={"font-semibold text-lg"}>
-                    {title}
-                </div>
-                <div className={"text-sm"}>
-                    {description}
-                </div>
+                className={"flex items-center justify-between cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
+                <Link href={`/memories/${id}`} className={"flex flex-col"}>
+                    <div className={"font-semibold text-lg"}>
+                        {title}
+                    </div>
+                    <div className={"text-sm"}>
+                        {description}
+                    </div>
+                </Link>
+                <button className={"group block"}>
+                    <FaRegHeart className={"block group-hover:hidden text-2xl"}/>
+                    <FaHeart className={"hidden group-hover:block text-2xl"}/>
+                </button>
             </div>
-        </Link>
     )
         ;
 };
