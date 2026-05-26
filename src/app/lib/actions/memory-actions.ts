@@ -1,7 +1,8 @@
 "use server"
 import {auth} from "@/app/lib/auth/server";
 import {db} from "@/app/lib/db";
-import {memories} from "@/app/lib/db/schema";
+import {favorites, memories} from "@/app/lib/db/schema";
+import {and, eq} from "drizzle-orm";
 
 export async function createMemory(data: {
     title: string,
@@ -21,4 +22,24 @@ export async function createMemory(data: {
         people: data.people,
         description: data.memory
     });
+}
+
+export async function addFavorite(memoryId: string) {
+    const session = await auth();
+    if (!session || !session.user) {
+        throw new Error("Unauthorized")
+    }
+    await db.insert(favorites).values({
+        userId: session.user.id,
+        memoryId: memoryId,
+    });
+}
+
+export async function removeFavorite(memoryId: string) {
+    const session = await auth();
+    if (!session || !session.user) {
+        throw new Error("Unauthorized")
+    }
+
+    await db.delete(favorites).where(and(eq(favorites.memoryId, memoryId), eq(favorites.userId, session.user.id)));
 }

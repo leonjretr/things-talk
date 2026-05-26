@@ -1,7 +1,7 @@
 import "server-only"
 import {db} from "@/app/lib/db";
-import {count, desc, eq} from "drizzle-orm";
-import {memories} from "@/app/lib/db/schema";
+import {and, count, desc, eq} from "drizzle-orm";
+import {memories, favorites} from "@/app/lib/db/schema";
 import {auth} from "@/app/lib/auth/server";
 
 export async function getMemoriesByUserPaginated(userId: string, page: number, limit: number, orderFn = desc) {
@@ -48,5 +48,16 @@ export async function getTotalMemoriesByUser() {
     }).from(memories).where(eq(memories.userId, session.user.id))
 
     return Number(result?.count);
+}
+
+export async function checkFavorite(memoryId: string) {
+    const session = await auth();
+    if (!session || !session.user) {
+        throw new Error("Unauthorized")
+    }
+
+    return await db.query.favorites.findFirst({
+        where: and(eq(favorites.memoryId, memoryId), eq(favorites.userId, session.user.id))
+    });
 }
 
