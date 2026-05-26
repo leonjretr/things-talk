@@ -26,8 +26,7 @@ const ObjectMemoryCard = ({title, description, memoryId}: ObjectMemoryCardProps)
             </Link>
             <FavoriteButton memoryId={memoryId}/>
         </div>
-    )
-        ;
+    );
 };
 
 export default ObjectMemoryCard;
