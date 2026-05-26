@@ -20,7 +20,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                 <div className={"gap-y-3 my-5"}>
                     {memories.length === 0 ?
                         notFound() : memories?.map((memory) => (
-                            <ObjectMemoryCard key={memory.id} title={memory.objectName} id={memory.id}
+                            <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
                                               description={memory.description}/>
 
                         ))}

@@ -37,7 +37,7 @@ export const accounts = pgTable("account", {
 
     refresh_token: text("refresh_token"),
     access_token: text("access_token"),
-    expires_at: timestamp("expires_at", { mode: "date" }),
+    expires_at: timestamp("expires_at", {mode: "date"}),
 
     token_type: text("token_type"),
     scope: text("scope"),
@@ -65,4 +65,10 @@ export const memories = pgTable("memory", {
     people: text("people"),
     description: text("description"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
+})
+
+export const favorites = pgTable("favorite", {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id").notNull().references(() => users.id),
+    memoryId: uuid("memory_id").notNull().references(() => memories.id),
 })

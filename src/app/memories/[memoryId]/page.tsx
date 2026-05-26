@@ -15,7 +15,7 @@ const Page = async ({params}: { params: Promise<{ memoryId: string }> }) => {
     // это страница КОНКРЕТНОЙ мемори
 
     return (
-        <div className={"min-h-screen"}>
+        <div className={"flex flex-col min-h-screen"}>
             <div className={"flex justify-center"}>
                 <div className={"uppercase font-poppins font-medium italic text-3xl m-5"}>
                     Title: {memories?.objectName}
