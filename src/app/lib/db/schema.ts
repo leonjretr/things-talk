@@ -1,7 +1,7 @@
 import {
     pgTable,
     text,
-    timestamp,
+    timestamp, unique,
     uuid,
     varchar,
 } from "drizzle-orm/pg-core"
@@ -72,10 +72,12 @@ export const favorites = pgTable("favorite", {
     id: uuid("id").defaultRandom().primaryKey(),
     userId: uuid("user_id").notNull().references(() => users.id),
     memoryId: uuid("memory_id").notNull().references(() => memories.id),
-})
+}, (table) => ({
+    uniqueFavorite: unique().on(table.userId, table.memoryId)
+}))
 
 
-export const memoriesRelations = relations(memories, ({ many, one }) => ({
+export const memoriesRelations = relations(memories, ({many, one}) => ({
     favorites: many(favorites),
     author: one(users, {
         fields: [memories.userId],
@@ -83,7 +85,7 @@ export const memoriesRelations = relations(memories, ({ many, one }) => ({
     }),
 }));
 
-export const favoritesRelations = relations(favorites, ({ one }) => ({
+export const favoritesRelations = relations(favorites, ({one}) => ({
     memory: one(memories, {
         fields: [favorites.memoryId],
         references: [memories.id],
@@ -94,7 +96,7 @@ export const favoritesRelations = relations(favorites, ({ one }) => ({
     }),
 }));
 
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(users, ({many}) => ({
     memories: many(memories),
     favorites: many(favorites),
 }));
