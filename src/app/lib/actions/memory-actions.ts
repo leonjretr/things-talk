@@ -3,6 +3,7 @@ import {auth} from "@/app/lib/auth/server";
 import {db} from "@/app/lib/db";
 import {favorites, memories} from "@/app/lib/db/schema";
 import {and, eq} from "drizzle-orm";
+import {revalidatePath} from "next/cache";
 
 export async function createMemory(data: {
     title: string,
@@ -33,6 +34,7 @@ export async function addFavorite(memoryId: string) {
         userId: session.user.id,
         memoryId: memoryId,
     });
+    revalidatePath("/memories");
 }
 
 export async function removeFavorite(memoryId: string) {
@@ -42,4 +44,5 @@ export async function removeFavorite(memoryId: string) {
     }
 
     await db.delete(favorites).where(and(eq(favorites.memoryId, memoryId), eq(favorites.userId, session.user.id)));
+    revalidatePath("/memories");
 }
