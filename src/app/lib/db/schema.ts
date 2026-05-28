@@ -5,6 +5,7 @@ import {
     uuid,
     varchar,
 } from "drizzle-orm/pg-core"
+import {relations} from "drizzle-orm";
 
 export const users = pgTable("user", {
     id: uuid("id").defaultRandom().primaryKey(),
@@ -72,3 +73,28 @@ export const favorites = pgTable("favorite", {
     userId: uuid("user_id").notNull().references(() => users.id),
     memoryId: uuid("memory_id").notNull().references(() => memories.id),
 })
+
+
+export const memoriesRelations = relations(memories, ({ many, one }) => ({
+    favorites: many(favorites),
+    author: one(users, {
+        fields: [memories.userId],
+        references: [users.id],
+    }),
+}));
+
+export const favoritesRelations = relations(favorites, ({ one }) => ({
+    memory: one(memories, {
+        fields: [favorites.memoryId],
+        references: [memories.id],
+    }),
+    user: one(users, {
+        fields: [favorites.userId],
+        references: [users.id],
+    }),
+}));
+
+export const usersRelations = relations(users, ({ many }) => ({
+    memories: many(memories),
+    favorites: many(favorites),
+}));

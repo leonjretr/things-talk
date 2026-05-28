@@ -6,9 +6,10 @@ interface ObjectMemoryCardProps {
     title: string | null;
     description: string | null;
     memoryId: string;
+    isFavorite: boolean;
 }
 
-const ObjectMemoryCard = ({title, description, memoryId}: ObjectMemoryCardProps) => {
+const ObjectMemoryCard = ({title, description, memoryId, isFavorite}: ObjectMemoryCardProps) => {
 
     // создаёшь блок с карточками всех историй на главной странице, там фетчишь и сюда
     // и сюда передаёшь через пропсы
@@ -24,7 +25,7 @@ const ObjectMemoryCard = ({title, description, memoryId}: ObjectMemoryCardProps)
                     {description}
                 </div>
             </Link>
-            <FavoriteButton memoryId={memoryId}/>
+            <FavoriteButton memoryId={memoryId} isFavoriteProp={isFavorite}/>
         </div>
     );
 };

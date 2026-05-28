@@ -18,10 +18,10 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                     <PageCounter currentPage={currentPage}/>
                 </div>
                 <div className={"gap-y-3 my-5"}>
-                    {memories.length === 0 ?
+                    {memories?.length === 0 ?
                         notFound() : memories?.map((memory) => (
                             <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
-                                              description={memory.description}/>
+                                              description={memory.description} isFavorite={memory.isFavorite}/>
 
                         ))}
                 </div>

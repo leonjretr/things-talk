@@ -23,12 +23,35 @@ export async function getMemoryById(memoryId: string) {
 
 export async function getMemoriesPaginated(page: number, limit: number, orderFn = desc) {
     const offset = (page - 1) * limit;
+    const session = await auth();
+    if (!session || !session.user) {
+        const memoriesList =  await db.query.memories.findMany({
+            orderBy: orderFn(memories.createdAt),
+            limit,
+            offset,
+        });
+        return memoriesList.map(memory => ({
+            ...memory,
+            isFavorite: false,
+        }));
 
-    return await db.query.memories.findMany({
-        orderBy: orderFn(memories.createdAt),
-        limit,
-        offset,
-    });
+    } else if (session && session.user) {
+        const memoriesList = await db.query.memories.findMany({
+            orderBy: orderFn(memories.createdAt),
+            limit,
+            offset,
+
+            with: {
+                favorites: {
+                    where: and(eq(favorites.memoryId, memories.id ),eq(favorites.userId, session.user.id))
+                }
+            }
+        });
+        return memoriesList.map(memory => ({
+            ...memory,
+            isFavorite: memory.favorites.length > 0,
+        }))
+    }
 }
 
 export async function getTotalMemories() {
@@ -48,16 +71,5 @@ export async function getTotalMemoriesByUser() {
     }).from(memories).where(eq(memories.userId, session.user.id))
 
     return Number(result?.count);
-}
-
-export async function checkFavorite(memoryId: string) {
-    const session = await auth();
-    if (!session || !session.user) {
-        throw new Error("Unauthorized")
-    }
-
-    return await db.query.favorites.findFirst({
-        where: and(eq(favorites.memoryId, memoryId), eq(favorites.userId, session.user.id))
-    });
 }
 
