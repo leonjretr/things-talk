@@ -18,7 +18,6 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
 
     const memories = await getMemoriesByUserPaginated(session?.user?.id, currentPage, fetchLimit, desc)
 
-
     return (
         <div className={"min-h-screen"}>
             <ProfileUserPlate/>
@@ -26,14 +25,14 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                 <ProfileNavPlate activeTab={"memories"}/>
             </div>
             <div className={"grid grid-cols-2 justify-center gap-y-3 m-5"}>
-                {memories.length === 0 ?
-                    <div> Sorry, you do not have any published memories at the moment</div> : memories?.map((memory) => (
+                {memories?.length === 0 ?
+                    <div> Sorry, you do not have any published memories at the
+                        moment</div> : memories?.map((memory) => (
                         <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
-                                          description={memory.description}/>
+                                          description={memory.description} isFavorite={memory.isFavorite}/>
 
                     ))}
             </div>
-
         </div>
     );
 };
