@@ -7,12 +7,21 @@ import {auth} from "@/app/lib/auth/server";
 export async function getMemoriesByUserPaginated(userId: string, page: number, limit: number, orderFn = desc) {
     const offset = (page - 1) * limit;
 
-    return await db.query.memories.findMany({
+    const myMemoriesList = await db.query.memories.findMany({
         where: (memory, {eq}) => eq(memory.userId, userId),
         orderBy: orderFn(memories.createdAt),
         limit,
         offset,
+        with: {
+            favorites: {
+                where: and(eq(favorites.memoryId, memories.id), eq(favorites.userId, userId))
+            }
+        }
     });
+    return myMemoriesList.map(memory => ({
+        ...memory,
+        isFavorite: memory.favorites.length > 0,
+    }))
 }
 
 export async function getMemoryById(memoryId: string) {
@@ -25,7 +34,7 @@ export async function getMemoriesPaginated(page: number, limit: number, orderFn 
     const offset = (page - 1) * limit;
     const session = await auth();
     if (!session || !session.user) {
-        const memoriesList =  await db.query.memories.findMany({
+        const memoriesList = await db.query.memories.findMany({
             orderBy: orderFn(memories.createdAt),
             limit,
             offset,
@@ -43,7 +52,7 @@ export async function getMemoriesPaginated(page: number, limit: number, orderFn 
 
             with: {
                 favorites: {
-                    where: and(eq(favorites.memoryId, memories.id ),eq(favorites.userId, session.user.id))
+                    where: and(eq(favorites.memoryId, memories.id), eq(favorites.userId, session.user.id))
                 }
             }
         });
