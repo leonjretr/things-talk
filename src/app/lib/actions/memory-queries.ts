@@ -3,6 +3,7 @@ import {db} from "@/app/lib/db";
 import {and, count, desc, eq} from "drizzle-orm";
 import {memories, favorites} from "@/app/lib/db/schema";
 import {auth} from "@/app/lib/auth/server";
+import {redirect} from "next/navigation";
 
 export async function getMemoriesByUserPaginated(userId: string, page: number, limit: number, orderFn = desc) {
     const offset = (page - 1) * limit;
@@ -80,5 +81,19 @@ export async function getTotalMemoriesByUser() {
     }).from(memories).where(eq(memories.userId, session.user.id))
 
     return Number(result?.count);
+}
+
+export async function getFavoritesOfUser(page?: number, limit?: number) {
+    // const offset = (page - 1) * limit;
+    const session = await auth();
+
+    if (!session || !session.user) {
+        return redirect("/login");
+    } else if (session && session.user) {
+        const myFavoritesList = await db.select().from(favorites).innerJoin(memories, eq(favorites.memoryId, memories.id)).where(eq(favorites.userId, session.user.id));
+        return myFavoritesList.map(favorite => ({
+            ...favorite
+        }));
+    }
 }
 
