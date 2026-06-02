@@ -6,14 +6,18 @@ import {auth} from "@/app/lib/auth/server";
 import {getFavoritesOfUser} from "@/app/lib/actions/memory-queries";
 import ObjectMemoryCard from "@/components/cards/ObjectMemoryCard";
 import Link from "next/link";
+import PageCounter from '@/components/plates/PageCounter';
 
-const Page = async () => {
+const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }) => {
     const session = await auth();
     if (!session || !session.user) {
         redirect("/login");
     }
+    const {page} = await searchParams;
+    const currentPage = Number(page ?? "1");
+    const fetchLimit = 10;
 
-    const userFavorites = await getFavoritesOfUser();
+    const userFavorites = await getFavoritesOfUser(currentPage, fetchLimit);
     return (
         <div className={"min-h-screen"}>
             <ProfileUserPlate/>
@@ -34,6 +38,8 @@ const Page = async () => {
                                       title={userFavorite.memory.objectName}
                                       description={userFavorite.memory.description}/>
                 ))}</div>}
+
+            <PageCounter currentPage={currentPage}/>
         </div>
     );
 };
