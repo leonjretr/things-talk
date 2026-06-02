@@ -72,6 +72,7 @@ export const favorites = pgTable("favorite", {
     id: uuid("id").defaultRandom().primaryKey(),
     userId: uuid("user_id").notNull().references(() => users.id),
     memoryId: uuid("memory_id").notNull().references(() => memories.id),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
 }, (table) => ({
     uniqueFavorite: unique().on(table.userId, table.memoryId)
 }))

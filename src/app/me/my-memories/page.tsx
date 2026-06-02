@@ -6,6 +6,7 @@ import {redirect} from "next/navigation";
 import {getMemoriesByUserPaginated} from "@/app/lib/actions/memory-queries";
 import {desc} from "drizzle-orm";
 import ObjectMemoryCard from "@/components/cards/ObjectMemoryCard";
+import PageCounter from '@/components/plates/PageCounter';
 
 const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }) => {
     const session = await auth();
@@ -33,6 +34,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
 
                     ))}
             </div>
+            <PageCounter currentPage={currentPage}/>
         </div>
     );
 };

@@ -83,14 +83,17 @@ export async function getTotalMemoriesByUser() {
     return Number(result?.count);
 }
 
-export async function getFavoritesOfUser(page?: number, limit?: number) {
-    // const offset = (page - 1) * limit;
+export async function getFavoritesOfUser(page: number, limit: number, orderFn = desc) {
+    const offset = (page - 1) * limit;
     const session = await auth();
 
     if (!session || !session.user) {
         return redirect("/login");
     } else if (session && session.user) {
-        const myFavoritesList = await db.select().from(favorites).innerJoin(memories, eq(favorites.memoryId, memories.id)).where(eq(favorites.userId, session.user.id));
+        const myFavoritesList = await db.select().from(favorites)
+            .innerJoin(memories, eq(favorites.memoryId, memories.id))
+            .where(eq(favorites.userId, session.user.id))
+            .orderBy(orderFn(favorites.createdAt)).limit(limit).offset(offset);
         return myFavoritesList.map(favorite => ({
             ...favorite
         }));

@@ -10,14 +10,17 @@ interface PageCounterProps {
 
 const PageCounter = async ({currentPage}: PageCounterProps) => {
     const totalMemories = await getTotalMemories();
-    const totalPages = Number(totalMemories) / 10;
-    if (totalPages == 0 || !totalPages) return notFound();
+    const totalPages = Math.ceil(Number(totalMemories) / 10);
+    if (totalPages === 0) return notFound();
     let start = Math.max(1, currentPage - 2);
     const end = Math.min(totalPages, start + 4);
     if (end - start < 4) {
         start = Math.max(1, end - 4);
     }
-    const pageArray = Array.from({length: 5}, (_, i) => start + i);
+    const pageArray = Array.from(
+        {length: end - start + 1},
+        (_, i) => start + i
+    );
     const currentPageColor = "bg-brandWalnut text-white scale-90";
     const otherPagesColor = "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut";
 
@@ -26,10 +29,18 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
             <Link href={`/memories?page=${currentPage - 1}`}
                   className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowLeft/></Link>
             <div className={"flex items-center justify-center gap-x-1"}>
-                {pageArray.map((page, index) => (
-                    <Link href={`/memories?page=${page}`}
-                          className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md text-brandLightgold ${index == 2 && currentPage > 2 ? currentPageColor : otherPagesColor} ${currentPage<2 && currentPage==index+1 ? currentPageColor : otherPagesColor}`}
-                          key={index}>{page}</Link>
+                {pageArray.map((page) => (
+                    <Link
+                        key={page}
+                        href={`/memories?page=${page}`}
+                        className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md text-brandLightgold ${
+                            page === currentPage
+                                ? currentPageColor
+                                : otherPagesColor
+                        }`}
+                    >
+                        {page}
+                    </Link>
                 ))}
             </div>
             <Link href={`/memories?page=${currentPage + 1}`}
