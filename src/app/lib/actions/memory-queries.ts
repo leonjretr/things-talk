@@ -9,13 +9,13 @@ export async function getMemoriesByUserPaginated(userId: string, page: number, l
     const offset = (page - 1) * limit;
 
     const myMemoriesList = await db.query.memories.findMany({
-        where: (memory, {eq}) => eq(memory.userId, userId),
+        where: eq(memories.userId, userId),
         orderBy: orderFn(memories.createdAt),
         limit,
         offset,
         with: {
             favorites: {
-                where: and(eq(favorites.memoryId, memories.id), eq(favorites.userId, userId))
+                where: eq(favorites.userId, userId)
             }
         }
     });

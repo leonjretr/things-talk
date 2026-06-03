@@ -16,7 +16,7 @@ const ObjectMemoryCard = ({title, description, memoryId, isFavorite}: ObjectMemo
 
     return (
         <div
-            className={"flex items-center justify-between cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
+            className={"flex justify-between cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
             <Link href={`/memories/${memoryId}`} className={"flex flex-col"}>
                 <div className={"font-semibold text-lg"}>
                     {title}

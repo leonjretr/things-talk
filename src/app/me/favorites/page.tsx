@@ -22,7 +22,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
         <div className={"min-h-screen"}>
             <ProfileUserPlate/>
             <div className={"flex justify-center my-5 text-xl"}>
-                <ProfileNavPlate activeTab={"favourites"}/>
+                <ProfileNavPlate activeTab={"favorites"}/>
             </div>
 
             {userFavorites?.length === 0 ? <div className={"flex flex-col items-center"}>
