@@ -35,6 +35,8 @@ export async function addFavorite(memoryId: string) {
         memoryId: memoryId,
     });
     revalidatePath("/memories");
+    revalidatePath("/me/my-memories");
+    revalidatePath("/me/favorites");
 }
 
 export async function removeFavorite(memoryId: string) {
@@ -45,4 +47,6 @@ export async function removeFavorite(memoryId: string) {
 
     await db.delete(favorites).where(and(eq(favorites.memoryId, memoryId), eq(favorites.userId, session.user.id)));
     revalidatePath("/memories");
+    revalidatePath("/me/my-memories");
+    revalidatePath("/me/favorites");
 }

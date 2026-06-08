@@ -17,15 +17,16 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                 <div className={"flex"}>
                     <PageCounter currentPage={currentPage}/>
                 </div>
-                <div className={"gap-y-3 my-5"}>
+                <div className={"my-5"}>
                     {memories?.length === 0 ?
                         notFound() : memories?.map((memory) => (
-                            <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
-                                              description={memory.description} isFavorite={memory.isFavorite}/>
-
-                        ))}
+                            <div className={"my-3"} key={memory.id}>
+                                <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
+                                                  description={memory.description} isFavorite={memory.isFavorite}/>
+                            </div>
+                        ))
+                    }
                 </div>
-
             </div>
 
             <div className={"flex justify-end"}>

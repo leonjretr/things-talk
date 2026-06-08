@@ -20,7 +20,7 @@ const ProfileDrawer = ({name}: ProfileDrawerProps) => {
         {name: "new memory", icon: <BiSolidBookAdd/>, toLink: "/me/add"},
         {name: "your memories", icon: <GiBookshelf/>, toLink: "/me/my-memories"},
         {name: "people's memories", icon: <GiLoveLetter/>, toLink: "/memories"},
-        {name: "favourites", icon: <FaHeart/>, toLink: "/me/favourites"},
+        {name: "favourites", icon: <FaHeart/>, toLink: "/me/favorites"},
     ];
 
     return (

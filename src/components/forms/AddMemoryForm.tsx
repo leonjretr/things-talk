@@ -52,7 +52,7 @@ const AddMemoryForm = () => {
             error: "Ooops..😱 Something went wrong, please try again",
         }).then(() => {
             router.refresh();
-            router.push("/me/memories")
+            router.push("/me/my-memories")
         })
     }
 
