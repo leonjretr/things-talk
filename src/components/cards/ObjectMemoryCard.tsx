@@ -25,6 +25,7 @@ const ObjectMemoryCard = ({title, description, memoryId, isFavorite}: ObjectMemo
                     {description}
                 </div>
             </Link>
+
             <FavoriteButton memoryId={memoryId} isFavoriteProp={isFavorite}/>
         </div>
     );
