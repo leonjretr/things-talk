@@ -1,6 +1,6 @@
 import "server-only"
 import {db} from "@/app/lib/db";
-import {and, count, desc, eq} from "drizzle-orm";
+import {count, desc, eq} from "drizzle-orm";
 import {memories, favorites} from "@/app/lib/db/schema";
 import {auth} from "@/app/lib/auth/server";
 import {redirect} from "next/navigation";
@@ -53,7 +53,7 @@ export async function getMemoriesPaginated(page: number, limit: number, orderFn 
 
             with: {
                 favorites: {
-                    where: and(eq(favorites.memoryId, memories.id), eq(favorites.userId, session.user.id))
+                    where: eq(favorites.userId, session.user.id)
                 }
             }
         });
