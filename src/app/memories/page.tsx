@@ -11,6 +11,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
     const currentPage = Number(page ?? "1");
     const fetchLimit = 10;
     const memories = await getMemoriesPaginated(currentPage, fetchLimit, desc);
+
     return (
         <div className={"min-h-screen flex flex-col items-center justify-between m-10"}>
             <div className={"flex flex-col items-center"}>

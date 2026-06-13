@@ -8,9 +8,9 @@ interface ProfileNavPlateProps {
 const ProfileNavPlate = ({activeTab}: ProfileNavPlateProps) => {
 
     const buttons = [
-        {link: "/me/favorites", name: "favourites"},
+        {link: "/me/favorites", name: "favorites"},
         {link: "/me/my-memories", name: "memories"},
-        {link: "/me/settings", name: "settings"}
+        {link: "/me", name: "settings"}
     ];
 
     return (

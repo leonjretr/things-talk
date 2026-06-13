@@ -15,23 +15,62 @@ const Page = async ({params}: { params: Promise<{ memoryId: string }> }) => {
     // это страница КОНКРЕТНОЙ мемори
 
     return (
-        <div className={"flex flex-col min-h-screen"}>
-            <div className={"flex justify-center"}>
-                <div className={"uppercase font-poppins font-medium italic text-3xl m-5"}>
-                    Title: {memories?.objectName}
+        <div className="min-h-screen bg-brandLightgold px-6 py-12">
+            <div className="mx-auto max-w-4xl">
+                <div className="relative">
+                    <span className="absolute -top-10 left-0 text-[10rem] font-serif text-brandTangerine/10">
+                    &#34;
+                    </span>
+
+                    <h1 className={""}>
+                        Hello
+                    </h1>
                 </div>
-                <div> Author: {author?.name} {author?.surname}</div>
-            </div>
-            <div className={"flex mx-10 my-5"}>
-                <div className={"font-poppins"}>
-                    This thing is really connected to: {memories?.people}
+
+                <div className="mb-10 text-center">
+                    <h1 className="font-poppins text-5xl font-bold uppercase tracking-wide text-brandWalnut">
+                        {memories.objectName}
+                    </h1>
+
+                    <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-brandTangerine"/>
+
+                    <p className="mt-4 font-poppins text-lg text-brandWalnut/80">
+                        Shared by{" "}
+                        <span className="font-medium">
+                    {author?.name} {author?.surname}
+                </span>
+                    </p>
                 </div>
-                <div className={"font-poppins"}>
-                    And my feelings about it are: {memories?.emotions}
+
+                <div className="mb-8 grid gap-4 md:grid-cols-2">
+
+                    <div className="rounded-2xl border border-brandWalnut/10 bg-white/50 p-6 shadow-sm">
+                        <p className="mb-2 text-sm uppercase tracking-widest text-brandTangerine">
+                            Emotions
+                        </p>
+                        <p className="font-poppins text-brandWalnut">
+                            {memories.emotions}
+                        </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-brandWalnut/10 bg-white/50 p-6 shadow-sm">
+                        <p className="mb-2 text-sm uppercase tracking-widest text-brandTangerine">
+                            People
+                        </p>
+
+                        <p className="font-poppins text-brandWalnut">
+                            {memories.people}
+                        </p>
+                    </div>
+
                 </div>
-                <div className={"font-poppins"}>
-                    Description {memories?.description}
-                </div>
+
+                <article className="rounded-3xl border border-brandWalnut/10 bg-white/60 p-10 shadow-md max-w-3xl">
+                    <p className="font-poppins text-lg leading-9 text-brandWalnut whitespace-pre-wrap">
+                        {memories.description}
+                    </p>
+                </article>
+
             </div>
         </div>
     );
