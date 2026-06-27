@@ -13,7 +13,7 @@ const Header = async () => {
         <div
             className={"flex justify-between items-center w-full h-20 px-3 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
             <div className="flex items-center">
-                <Link href={"/goals"} className={"px-3 font-medium font-poppins italic hover:underline cursor-pointer"}>
+                <Link href={"/goals"} className={"px-3 text-xs mob1:text-sm mob3:text-md font-medium font-poppins italic hover:underline cursor-pointer"}>
                     project goals
                 </Link>
             </div>
