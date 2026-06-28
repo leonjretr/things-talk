@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div
             className={"flex justify-between items-center w-full h-20 p-5 border-t-2 border-brandCoffee font-inter text-brandCoffee font-semibold text-sm"}>
-            <div className={"flex"}>
+            <div className={"hidden sm:flex"}>
                 <a className={"hover:underline"} href={"https://leonsv.com"} rel={"noopener noreferrer"}
                    target="_blank">
                     leonid svietlychnyi
@@ -15,7 +15,16 @@ const Footer = () => {
                     &nbsp;- {date.getFullYear()}
                 </div>
             </div>
-            <div className={""}>
+            <div className={"flex sm:hidden"}>
+                <a className={"hover:underline"} href={"https://leonsv.com"} rel={"noopener noreferrer"}
+                   target="_blank">
+                    leonid sv.
+                </a>
+                <div>
+                    &nbsp;- {date.getFullYear()}
+                </div>
+            </div>
+            <div className={"hidden sm:flex"}>
                 thanks for visiting❤️
             </div>
             <div className={"flex gap-3"}>
