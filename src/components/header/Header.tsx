@@ -6,6 +6,7 @@ import SignUpButton from '../buttons/SignUpButton';
 import Link from "next/link";
 import {auth} from "@/app/lib/auth/server";
 import ProfileButton from "@/components/buttons/ProfileButton";
+import Hamburger from '../menus/Hamburger';
 
 const Header = async () => {
     const session = await auth();
@@ -34,7 +35,10 @@ const Header = async () => {
             </div>
             {/*<ProfileButton name={"Leon"}/>*/}
             {
-                session?.user?.name ? (<ProfileButton name={session.user.name}/>) :
+                session?.user?.name ? (<>
+                        <div className={"hidden sm:flex"}><ProfileButton name={session.user.name}/></div>
+                        <div className={"sm:hidden"}><Hamburger/></div>
+                    </>) :
                     (
                         <div className="flex items-center gap-x-3">
                             <LoginButton text={"login"}/>
