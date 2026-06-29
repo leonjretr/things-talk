@@ -13,14 +13,14 @@ const Header = async () => {
 
     return (
         <div
-            className={"flex justify-between items-center w-full h-20 px-3 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
-            <div className="flex items-center">
+            className={"grid grid-cols-12 items-center w-full h-20 px-2 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
+            <div className="flex items-center justify-start col-span-3">
                 <Link href={"/goals"}
-                      className={"px-3 text-xs mob1:text-sm mob3:text-md font-medium font-poppins italic hover:underline cursor-pointer "}>
+                      className={" text-xs mob1:text-sm mob3:text-base font-medium font-poppins italic hover:underline cursor-pointer "}>
                     project goals
                 </Link>
             </div>
-            <div className="flex items-center">
+            <div className="flex justify-center items-center col-span-6">
                 <button
                     className={"cursor-pointer justify-self-center"}>
                     <Link href={"/"} className={"flex flex-col justify-center"}>
@@ -28,7 +28,7 @@ const Header = async () => {
                             things talk
                         </div>
                         <div
-                            className={"flex justify-center font-poppins italic text-xxs pt-3 leading-1 sm:after:content-['what&#39;s their language?'] "}>
+                            className={"flex justify-center font-poppins italic text-xxs pt-3 leading-1 after:content-[''] sm:after:content-['what&#39;s their language?'] "}>
                         </div>
                     </Link>
                 </button>
@@ -36,11 +36,11 @@ const Header = async () => {
             {/*<ProfileButton name={"Leon"}/>*/}
             {
                 session?.user?.name ? (<>
-                        <div className={"hidden sm:flex"}><ProfileButton name={session.user.name}/></div>
-                        <div className={"sm:hidden"}><Hamburger/></div>
+                        <div className={"hidden sm:flex sm:justify-end col-span-3"}><ProfileButton name={session.user.name}/></div>
+                        <div className={"flex justify-end sm:hidden col-span-3"}><Hamburger/></div>
                     </>) :
                     (
-                        <div className="flex items-center gap-x-3">
+                        <div className="flex items-center justify-end gap-x-0.5 mob2:gap-x-1.5 sm:gap-x-3 col-span-3">
                             <LoginButton text={"login"}/>
                             <SignUpButton text={"sign up"}/>
                         </div>
