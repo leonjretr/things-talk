@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <div className={"h-screen sm:min-h-screen bg-white overflow-visible"}>
+        <div className={"min-h-screen bg-white overflow-visible"}>
             <div className={"flex flex-col items-center p-5 gap-x-5"}>
                 <div className={"relative w-full overflow-hidden max-w-5xl rounded-lg"}>
                     <div className={"flex justify-center"}>
@@ -13,7 +13,7 @@ export default function Home() {
                     </div>
 
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div className="flex flex-col items-center backdrop-blur-sm p-2 rounded-lg max-w-xl transition-all">
+                        <div className="flex flex-col items-center backdrop-blur-sm p-4 rounded-lg max-w-xl transition-all">
                             <h1 className="text-white text-2xl mob3:text-3xl sm:text-5xl lg:text-7xl font-poppins font-bold backdrop-blur-sm px-4 rounded-md">
                                 things talk.
                             </h1>

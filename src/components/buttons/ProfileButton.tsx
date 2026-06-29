@@ -15,7 +15,7 @@ const ProfileButton = ({name}: ProfileButtonProps) => {
     }
     return (
         <div onClick={clickDrawer}
-             className={`font-poppins text-xs italic text-brandCoffee px-3 cursor-pointer`}> hey, {name}!
+             className={`font-poppins italic text-brandCoffee px-3 cursor-pointer`}> hey, {name}!
             <ProfileDrawer name={name}/>
         </div>
     );
