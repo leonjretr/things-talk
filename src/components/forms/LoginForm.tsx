@@ -43,30 +43,56 @@ const LoginForm = () => {
     const {formState: {errors}} = form;
 
     return (
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full"
+        >
             <FieldSet>
-                <FieldGroup>
-                    <Field className={"max-w-48"}>
-                        <FieldLabel className={"font-inter font-semibold"}>your email</FieldLabel>
-                        <Input {...form.register("email")} placeholder={"johndoe@example.com"}/>
-                        {errors.email && <FieldError>{errors.email.message}</FieldError>}
+                <FieldGroup className="space-y-4">
+                    <Field className="w-full md:w-72">
+                        <FieldLabel className="font-inter font-semibold">
+                            your email
+                        </FieldLabel>
+                        <Input {...form.register("email")} placeholder="johndoe@example.com" />
+                        {errors.email && (
+                            <FieldError>{errors.email.message}</FieldError>
+                        )}
                     </Field>
-                    <Field className={"max-w-48 "}>
-                        <FieldLabel className={"font-inter font-semibold"}>your
-                            password</FieldLabel>
-                        <Input {...form.register("password")} placeholder={"qwerty123"}/>
-                        {errors.password && <FieldError>{errors.password.message}</FieldError>}
+
+                    <Field className="w-full md:w-72">
+                        <FieldLabel className="font-inter font-semibold">
+                            your password
+                        </FieldLabel>
+
+                        <Input
+                            {...form.register("password")}
+                            placeholder="qwerty123"
+                        />
+
+                        {errors.password && (
+                            <FieldError>{errors.password.message}</FieldError>
+                        )}
                     </Field>
+
                 </FieldGroup>
             </FieldSet>
-            <h1 className={"text-sm text-ce font-inter mt-5"}> not registered?&nbsp;
-                <Link href={"/sign-up"} className={"underline text-blue-700 font-semibold"}>
-                    create an account</Link>
-            </h1>
-            <div className={"flex justify-center mt-2"}>
-                <button type={"submit"}
-                        className={"bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md p-2.5"}>sign
-                    in!
+
+            <p className="text-sm font-inter mt-5 text-center md:text-left">
+                not registered?{" "}
+                <Link
+                    href="/sign-up"
+                    className="underline text-blue-700 font-semibold"
+                >
+                    create an account
+                </Link>
+            </p>
+
+            <div className="flex justify-center mt-5">
+                <button
+                    type="submit"
+                    className="bg-brandLightgold hover:bg-amber-300 transition-colors text-brandCoffee font-inter font-semibold rounded-md px-6 py-2.5"
+                >
+                    sign in!
                 </button>
             </div>
         </form>
