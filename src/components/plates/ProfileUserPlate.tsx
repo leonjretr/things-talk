@@ -6,38 +6,43 @@ import {getTotalMemoriesByUser} from "@/app/lib/actions/memory-queries";
 const ProfileUserPlate = async () => {
     const session = await auth();
     const memoriesAmount = getTotalMemoriesByUser();
-    return (
-        <div className={"px-10 pt-10"}>
-            <div className={"flex justify-between w-full bg-brandTangerine p-5 rounded-2xl"}>
-                <div className={"flex"}>
-                    <div className={"flex flex-col"}>
-                        <Image className={"rounded-xl border-2 border-white"} alt={"Author"}
-                               src={"/imgs/leo.jpg"}
-                               height={"150"}
-                               width={"150"}/>
+    return (<div className="px-4 md:px-8 lg:px-10 pt-6 md:pt-10">
+        <div
+            className="flex flex-col lg:flex-row lg:justify-between gap-8 bg-brandTangerine rounded-2xl p-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start">
+                <Image className="rounded-xl border-2 border-white shrink-0" alt="Author" src="/imgs/leo.jpg"
+                       width={150}
+                       height={150}
+                />
+                <div
+                    className="flex flex-col text-white font-poppins mt-6 sm:mt-0 sm:ml-6 text-center sm:text-left">
+                    <h1
+                        className="text-3xl md:text-4xl lg:text-5xl font-bold italic break-words"
+                    >
+                        hi, {session?.user?.name}
+                    </h1>
+
+                    <div className="mt-3 text-base md:text-lg font-medium break-all">
+                        you have got: {memoriesAmount} story
                     </div>
-                    <div className={"flex flex-col text-white font-poppins mx-6"}>
-                        <div className={"text-5xl font-bold italic"}>hi, {session?.user?.name}</div>
-                        {/*<div className={"text-3xl font-medium mt-1.5"}> Renowned author</div>*/}
-                        <div className={"flex gap-x-3 items-center mt-1 text-lg font-medium"}>
-                            <div>you&#39;ve got: {memoriesAmount} story</div>
-                        </div>
-                        <div className={"flex gap-x-3 items-center mt-1 text-lg font-medium"}>
-                            <div>your email: {session?.user?.email}</div>
-                        </div>
+
+                    <div className="mt-2 text-base md:text-lg font-medium break-all">
+                        your email: {session?.user?.email}
                     </div>
-                </div>
-                <div className={"flex items-center"}>
-                    <a href={"/myprofile/mystories/newstory"}>
-                        <button
-                            className={"w-max h-max p-3 rounded-lg bg-white text-black font-poppins font-medium"}>
-                            post a memory
-                        </button>
-                    </a>
                 </div>
             </div>
+
+            <div
+                className="flex justify-center lg:justify-end items-center"            >
+                <a href="/myprofile/mystories/newstory">
+                    <button
+                        className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white text-black font-poppins font-medium">
+                        post a memory
+                    </button>
+                </a>
+            </div>
         </div>
-    );
+    </div>);
 };
 
 export default ProfileUserPlate;
