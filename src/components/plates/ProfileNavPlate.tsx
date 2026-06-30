@@ -14,13 +14,16 @@ const ProfileNavPlate = ({activeTab}: ProfileNavPlateProps) => {
     ];
 
     return (
-        <>
-            {buttons.map((button, index) => (
-                <div key={index}>
-                    <ProfileNavPlateButton link={button.link} name={button.name} activeTab={activeTab}/>
-                </div>
+        <div className="flex flex-wrap justify-center gap-2">
+            {buttons.map((button) => (
+                <ProfileNavPlateButton
+                    key={button.link}
+                    link={button.link}
+                    name={button.name}
+                    activeTab={activeTab}
+                />
             ))}
-        </>
+        </div>
     );
 };
 

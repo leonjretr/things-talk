@@ -11,10 +11,11 @@ const Page = async () => {
         redirect("/login");
     }
     return (
-        <div className={"min-h-screen"}>
-            <ProfileUserPlate/>
-            <div className={"flex justify-center my-5 text-xl"}>
-                <ProfileNavPlate activeTab={"settings"}/>
+        <div className="min-h-screen">
+            <ProfileUserPlate />
+
+            <div className="flex justify-center flex-wrap gap-2 my-6 px-4 text-lg md:text-xl">
+                <ProfileNavPlate activeTab="settings" />
             </div>
         </div>
     );
