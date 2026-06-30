@@ -32,10 +32,10 @@ const Header = async () => {
                     </Link>
                 </button>
             </div>
-            {/*<ProfileButton name={"Leon"}/>*/}
             {
                 session?.user?.name ? (
-                        <div className={"col-span-3"}><ProfileButton name={session.user.name}/></div>) :
+                        <div className={"hidden sm:flex sm:justify-end col-span-3"}><ProfileButton
+                            name={session.user.name}/></div>) :
                     (
                         <div className="flex items-center justify-end gap-x-0.5 mob2:gap-x-1.5 sm:gap-x-3 col-span-3">
                             <LoginButton text={"login"}/>
