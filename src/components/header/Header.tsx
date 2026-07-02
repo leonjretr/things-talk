@@ -12,10 +12,10 @@ const Header = async () => {
 
     return (
         <div
-            className={"grid grid-cols-12 items-center w-full h-20 px-2 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
+            className={"grid grid-cols-12 items-center w-full h-20 px-4 py-4 bg-white text-brandCoffee border-b-2 border-solid border-brandCoffee"}>
             <div className="flex items-center justify-start col-span-3">
                 <Link href={"/goals"}
-                      className={"text-xs mob1:text-sm mob3:text-base font-medium font-poppins italic hover:underline cursor-pointer "}>
+                      className={"text-xs mob2:text-sm sm:text-base font-medium font-poppins italic hover:underline cursor-pointer "}>
                     project goals
                 </Link>
             </div>

@@ -10,22 +10,20 @@ interface ObjectMemoryCardProps {
 }
 
 const ObjectMemoryCard = ({title, description, memoryId, isFavorite}: ObjectMemoryCardProps) => {
-
-    // создаёшь блок с карточками всех историй на главной странице, там фетчишь и сюда
-    // и сюда передаёшь через пропсы
-
     return (
         <div
-            className={"flex justify-between cursor-pointer w-96 gap-3 border-2 rounded-lg border-brandWalnut p-2 font-poppins"}>
-            <Link href={`/memories/${memoryId}`} className={"flex flex-col"}>
-                <div className={"font-semibold text-lg"}>
+            className={"flex justify-between items-start gap-4 w-full rounded-lg border-2 border-brandWalnut p-4 font-poppins"}>
+            <Link href={`/memories/${memoryId}`} className={"flex-1 min-w-0"}>
+                <div className={"font-semibold text-lg break-words"}>
                     {title}
                 </div>
-                <div className={"text-sm"}>
+                <div className={"text-sm break-words"}>
                     {description}
                 </div>
             </Link>
-            <FavoriteButton memoryId={memoryId} isFavoriteProp={isFavorite}/>
+            <div className={"shrink-0"}>
+                <FavoriteButton memoryId={memoryId} isFavoriteProp={isFavorite}/>
+            </div>
         </div>
     );
 };
