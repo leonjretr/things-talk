@@ -10,67 +10,55 @@ const Page = async ({params}: { params: Promise<{ memoryId: string }> }) => {
     if (!memories) return notFound();
     const author = await getUserNameById(memories?.userId);
 
-
-    // фетчинг мемори по АЙДИ из парамов бэка, ну и соответственно выводишь всё на странице
-    // это страница КОНКРЕТНОЙ мемори
-
     return (
-        <div className="min-h-screen bg-brandLightgold px-6 py-12">
+        <div className="min-h-screen px-6 py-12">
             <div className="mx-auto max-w-4xl">
-                <div className="relative">
-                    <span className="absolute -top-10 left-0 text-[10rem] font-serif text-brandTangerine/10">
-                    &#34;
-                    </span>
-
-                    <h1 className={""}>
-                        Hello
-                    </h1>
-                </div>
-
                 <div className="mb-10 text-center">
-                    <h1 className="font-poppins text-5xl font-bold uppercase tracking-wide text-brandWalnut">
+                    <h1 className="font-poppins text-brandWalnut text-4xl md:text-6xl tracking-tight font-bold uppercase text-center break-words">
                         {memories.objectName}
                     </h1>
-
-                    <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-brandTangerine"/>
-
-                    <p className="mt-4 font-poppins text-lg text-brandWalnut/80">
-                        Shared by{" "}
-                        <span className="font-medium">
-                    {author?.name} {author?.surname}
-                </span>
+                    <p className="mt-4 font-inter italic text-center text-brandWalnut/70">
+                        by {author?.name} {author?.surname}
                     </p>
                 </div>
 
-                <div className="mb-8 grid gap-4 md:grid-cols-2">
-
-                    <div className="rounded-2xl border border-brandWalnut/10 bg-white/50 p-6 shadow-sm">
-                        <p className="mb-2 text-sm uppercase tracking-widest text-brandTangerine">
-                            Emotions
-                        </p>
-                        <p className="font-poppins text-brandWalnut">
-                            {memories.emotions}
-                        </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-brandWalnut/10 bg-white/50 p-6 shadow-sm">
-                        <p className="mb-2 text-sm uppercase tracking-widest text-brandTangerine">
-                            People
-                        </p>
-
-                        <p className="font-poppins text-brandWalnut">
-                            {memories.people}
-                        </p>
-                    </div>
-
+                <div className="flex items-center justify-center my-10">
+                    <div className="h-px w-16 bg-brandWalnut/20"/>
+                    <div className="mx-3 h-2 w-2 rounded-full bg-brandTangerine"/>
+                    <div className="h-px w-16 bg-brandWalnut/20"/>
                 </div>
 
-                <article className="rounded-3xl border border-brandWalnut/10 bg-white/60 p-10 shadow-md max-w-3xl">
-                    <p className="font-poppins text-lg leading-9 text-brandWalnut whitespace-pre-wrap">
+                <div
+                    className="mx-auto max-w-2xl space-y-6 rounded-xl border border-brandWalnut/10 bg-brandWalnut/[0.02] p-8">
+                    <div className="flex flex-col sm:flex-row">
+                        <div className="w-32 font-semibold uppercase tracking-widest text-brandWalnut/50">
+                            Emotions
+                        </div>
+                        <div className="font-poppins text-brandWalnut">
+                            {memories.emotions}
+                        </div>
+                    </div>
+
+                    <div className="border-t border-brandWalnut/10"/>
+                    <div className="flex flex-col sm:flex-row">
+                        <div className="w-32 font-semibold uppercase tracking-widest text-brandWalnut/50">
+                            People
+                        </div>
+                        <div className="font-poppins text-brandWalnut">
+                            {memories.people}
+                        </div>
+                    </div>
+                </div>
+                
+                <article className="relative mx-auto mt-16 max-w-3xl">
+                    <span
+                        className="absolute -left-7 -top-12 text-[8rem] leading-none text-brandWalnut/6 font-serif select-none">
+                        “
+                    </span>
+                    <p className="font-poppins text-lg md:text-xl leading-9 md:leading-10 text-brandWalnut whitespace-pre-wrap">
                         {memories.description}
                     </p>
                 </article>
-
             </div>
         </div>
     );
