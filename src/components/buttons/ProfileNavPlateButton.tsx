@@ -12,7 +12,7 @@ const ProfileNavPlateButton = ({link, activeTab, name}: ProfileNavPlateButtonPro
     return (
         <a href={`${link}`}>
             <button
-                className={`flex h-12 w-max px-4 ${isActive && "bg-gray-200"} ${isMemories && "border-x-2 border-brandTangerine"} items-center font-poppins hover:bg-gray-200 p-2 rounded-sm`}>
+                className={`flex p-3 text-sm mob3:text-base sm:text-lg w-max px-4 ${isActive && "bg-gray-200"} ${isMemories && "border-x-2 border-brandTangerine"} items-center font-poppins hover:bg-gray-200 p-2 rounded-sm`}>
                 <div>{name}</div>
             </button>
         </a>

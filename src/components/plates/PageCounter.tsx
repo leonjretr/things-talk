@@ -25,7 +25,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
     const otherPagesColor = "text-brandWalnut hover:text-brandLightgold hover:bg-brandWalnut";
 
     return (
-        <div className={"flex items-center gap-x-3"}>
+        <div className={"flex items-center gap-1 sm:gap-2 md:gap-3"}>
             <Link href={`/memories?page=${currentPage - 1}`}
                   className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}><FaArrowLeft/></Link>
             <div className={"flex items-center justify-center gap-x-1"}>
