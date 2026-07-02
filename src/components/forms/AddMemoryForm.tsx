@@ -65,7 +65,7 @@ const AddMemoryForm = () => {
                     <FieldSet>
                         <div className={"flex flex-col leading-none justify-center items-center font-inter"}>
                             <FieldLegend
-                                className={"text-xl font-semibold  tracking-tight text-neutral-900 leading-3"}>
+                                className={"text-lg sm:text-xl font-semibold tracking-tight text-neutral-900 leading-4"}>
                                 Add your memory. Perpetuate it. Be an interpreter.
                             </FieldLegend>
                             <p className="text-sm text-neutral-500 leading-3">
