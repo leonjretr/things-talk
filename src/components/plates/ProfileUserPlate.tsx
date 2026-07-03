@@ -10,7 +10,7 @@ const ProfileUserPlate = async () => {
         <div
             className="flex flex-col lg:flex-row lg:justify-between gap-8 bg-brandTangerine rounded-2xl p-6">
             <div className="flex flex-col sm:flex-row items-center sm:items-start">
-                <Image className="rounded-xl border-2 border-white shrink-0" alt="Author" src="/imgs/leo.jpg"
+                <Image className="rounded-xl border-2 border-white shrink-0 bg-white" alt="Author" src="/imgs/user.png"
                        width={150}
                        height={150}
                 />
@@ -23,7 +23,7 @@ const ProfileUserPlate = async () => {
                     </h1>
 
                     <div className="mt-3 text-base md:text-lg font-medium break-all">
-                        you have got: {memoriesAmount} story
+                        published stories: {memoriesAmount}
                     </div>
 
                     <div className="mt-2 text-base md:text-lg font-medium break-all">
@@ -33,7 +33,7 @@ const ProfileUserPlate = async () => {
             </div>
 
             <div
-                className="flex justify-center lg:justify-end items-center"            >
+                className="flex justify-center lg:justify-end items-center">
                 <a href="/myprofile/mystories/newstory">
                     <button
                         className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white text-black font-poppins font-medium">
