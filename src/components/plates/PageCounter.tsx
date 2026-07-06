@@ -39,8 +39,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
                         className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md text-brandLightgold ${
                             page === currentPage
                                 ? currentPageColor
-                                : otherPagesColor
-                        }`}
+                                : otherPagesColor}`}
                     >
                         {page}
                     </Link>
