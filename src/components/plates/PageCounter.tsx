@@ -30,7 +30,6 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
                 <Link href={`/memories?page=${currentPage - 1}`}
                       className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}>
                     <FaArrowLeft/>
-
                 </Link>}
             <div className={"flex items-center justify-center gap-x-1"}>
                 {pageArray.map((page) => (
