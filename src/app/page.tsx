@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import background from "../../public/imgs/background.png"
+import background2 from "../../public/imgs/background2.png"
 import Link from "next/link";
 
 export default function Home() {
@@ -29,6 +30,46 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <div className={"flex flex-col font-poppins items-center sm:hidden mt-14"}>
+                    <h1 className={"font-bold italic text-lg"}>
+                        things? and talk??
+                    </h1>
+                    <h1 className={"italic text-sm"}>
+                        what do you even mean???
+                    </h1>
+
+                    <h1 className={"text-sm mx-10 mt-5"}>
+                        that is right. its not your hearing.
+                    </h1>
+                    <h1 className={"text-sm mx-10"}>
+                        things can talk.
+                    </h1>
+                    <h1 className={"underline font-bold mt-10 text-xl"}>
+                        literally.
+                    </h1>
+                </div>
+
+                <div className={"relative w-full overflow-hidden max-w-5xl rounded-lg mt-7"}>
+                    <div className={"flex justify-center"}>
+                        <Image src={background2} alt={"Main page background 2"}
+                               className={"rounded-lg sm:sm:aspect-[16/9]"}/>
+                    </div>
+
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="flex flex-col items-center p-4 rounded-lg max-w-xl transition-all">
+                            <div className={"mt-20 backdrop-blur-sm text-white font-poppins w-full"}>
+                                Create a digital home for the objects that matter most and the memories they carry
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <Link href="/me/add">
+                    <button
+                        className="mt-6 bg-brandWalnut text-white transition hover:scale-110  font-quicksand px-6 py-3 rounded-lg font-bold">
+                        start now →
+                    </button>
+                </Link>
                 {/*<div className={"flex flex-col text-md font-poppins font-medium max-w-2xl gap-y-3 mt-5"}>*/}
                 {/*    <p>Hola, amigo! My name is Leo and this is my third personal project, whose goal is to learn new*/}
                 {/*        tools*/}
