@@ -44,7 +44,7 @@ export default function Home() {
                     <h1 className={"text-sm mx-10"}>
                         things can talk.
                     </h1>
-                    <h1 className={"underline font-bold mt-10 text-xl"}>
+                    <h1 className={"underline font-bold mt-2 text-xl"}>
                         literally.
                     </h1>
                 </div>
@@ -57,7 +57,7 @@ export default function Home() {
 
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                         <div className="flex flex-col items-center p-4 rounded-lg max-w-xl transition-all">
-                            <div className={"mt-20 backdrop-blur-sm text-white font-poppins w-full"}>
+                            <div className={"mt-20 backdrop-blur-sm text-white font-poppins p-2 rounded-lg"}>
                                 Create a digital home for the objects that matter most and the memories they carry
                             </div>
                         </div>
