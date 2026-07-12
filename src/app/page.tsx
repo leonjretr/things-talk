@@ -30,21 +30,31 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className={"flex flex-col font-poppins items-center sm:hidden mt-14"}>
-                    <h1 className={"font-bold italic text-lg"}>
-                        things? and talk??
-                    </h1>
-                    <h1 className={"italic text-sm"}>
-                        what do you even mean???
-                    </h1>
+                <div className="flex flex-col font-inter items-center sm:hidden mt-10 w-full gap-2.5">
+                    <div
+                        className="bg-neutral-100 rounded-2xl rounded-bl-none px-5 py-3 self-start max-w-[80%] shadow-sm">
+                        <p className="text-sm text-black font-bold">
+                            things? and talk??
+                        </p>
+                    </div>
+                    <div
+                        className="bg-neutral-100 rounded-2xl rounded-bl-none px-5 py-3 self-start max-w-[75%] shadow-sm">
+                        <p className="text-sm text-black font-medium">
+                            what do you even mean???
+                        </p>
+                    </div>
 
-                    <h1 className={"text-sm mx-10 mt-5"}>
-                        that is right. its not your hearing.
-                    </h1>
-                    <h1 className={"text-sm mx-10"}>
-                        things can talk.
-                    </h1>
-                    <h1 className={"underline font-bold mt-2 text-xl"}>
+                    <div
+                        className="bg-brandWalnut text-white rounded-2xl rounded-br-none px-5 py-3 self-end max-w-[80%] shadow-sm mt-3">
+                        <p className="text-sm">
+                            that is right. its not your hearing.
+                        </p>
+                        <p className="text-sm mt-1">
+                            things can talk.
+                        </p>
+                    </div>
+
+                    <h1 className="underline font-bold mt-3 text-2xl text-brandWalnut self-center mr-2">
                         literally.
                     </h1>
                 </div>
@@ -70,26 +80,6 @@ export default function Home() {
                         start now →
                     </button>
                 </Link>
-                {/*<div className={"flex flex-col text-md font-poppins font-medium max-w-2xl gap-y-3 mt-5"}>*/}
-                {/*    <p>Hola, amigo! My name is Leo and this is my third personal project, whose goal is to learn new*/}
-                {/*        tools*/}
-                {/*        that I will use in serious, commercial projects, to practice – not only the new tools, but*/}
-                {/*        everything that making a project involves: conceptualizing, implementing, thinking, improvising,*/}
-                {/*        solving issues, simply coding and gluing it all together.</p>*/}
-                {/*    <p>*/}
-                {/*        The idea is quite simple – to revive the spiritless. Let the person make notes about things*/}
-                {/*        that*/}
-                {/*        surround them, that are precious, that carry my-memories, that carry life – life that is not seen*/}
-                {/*        by*/}
-                {/*        others. And let others see it, feel it, touch it.*/}
-                {/*    </p>*/}
-                {/*    <p>*/}
-                {/*        If I’m honest, that sounded way too poetic. But hopefully you do enjoy my creation – or at*/}
-                {/*        least*/}
-                {/*        skills. Thank you for visiting and spending this moment with me.*/}
-                {/*    </p>*/}
-
-                {/*</div>*/}
 
             </div>
         </div>
