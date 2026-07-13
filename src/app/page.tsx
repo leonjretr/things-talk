@@ -54,7 +54,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <h1 className="underline font-bold mt-3 text-2xl text-brandWalnut self-center mr-2">
+                    <h1 className="underline font-bold mt-3 text-2xl  self-center mr-2">
                         literally.
                     </h1>
                 </div>
