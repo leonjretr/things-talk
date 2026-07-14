@@ -12,7 +12,6 @@ export default function Home() {
                         <Image src={background} alt={"Main page background"}
                                className={"rounded-lg aspect-[16/9]"}/>
                     </div>
-
                     <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm">
                         <div className="flex flex-col items-center p-4 rounded-lg max-w-xl transition-all">
                             <h1 className="text-white text-2xl mob3:text-3xl sm:text-5xl lg:text-7xl font-poppins font-bold backdrop-blur-sm px-4 rounded-md">
