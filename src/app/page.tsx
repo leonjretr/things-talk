@@ -10,7 +10,8 @@ export default function Home() {
                 <div className={"relative w-full overflow-hidden max-w-5xl rounded-lg"}>
                     <div className={"flex justify-center"}>
                         <Image src={background} alt={"Main page background"}
-                               className={"rounded-lg aspect-[16/9]"}/>
+                               className={"rounded-lg aspect-[16/9]"}
+                        />
                     </div>
                     <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm">
                         <div className="flex flex-col items-center p-4 rounded-lg max-w-xl transition-all">
