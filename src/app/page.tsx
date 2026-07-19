@@ -10,9 +10,9 @@ export default function Home() {
                 <div className={"relative w-full overflow-hidden max-w-5xl rounded-lg"}>
                     <div className={"flex justify-center"}>
                         <Image src={background} alt={"Main page background"}
-                               className={"rounded-lg aspect-[16/9]"}/>
+                               className={"rounded-lg aspect-[16/9]"}
+                        />
                     </div>
-
                     <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm">
                         <div className="flex flex-col items-center p-4 rounded-lg max-w-xl transition-all">
                             <h1 className="text-white text-2xl mob3:text-3xl sm:text-5xl lg:text-7xl font-poppins font-bold backdrop-blur-sm px-4 rounded-md">
@@ -54,12 +54,12 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <h1 className="underline font-bold mt-3 text-2xl text-brandWalnut self-center mr-2">
-                        literally.
-                    </h1>
+                    {/*<h1 className="underline font-bold mt-3 text-2xl  self-center mr-2">*/}
+                    {/*    literally.*/}
+                    {/*</h1>*/}
                 </div>
 
-                <div className={"relative w-full overflow-hidden max-w-5xl rounded-lg mt-7"}>
+                <div className={"sm:hidden relative w-full overflow-hidden max-w-5xl rounded-lg mt-7"}>
                     <div className={"flex justify-center"}>
                         <Image src={background2} alt={"Main page background 2"}
                                className={"rounded-lg sm:sm:aspect-[16/9]"}/>
@@ -74,7 +74,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <Link href="/me/add">
+                <Link href="/me/add" className={"sm:hidden"}>
                     <button
                         className="mt-6 bg-brandWalnut text-white transition hover:scale-110  font-quicksand px-6 py-3 rounded-lg font-bold">
                         start now →

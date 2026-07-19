@@ -19,7 +19,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
 
     const userFavorites = await getFavoritesOfUser(currentPage, fetchLimit);
     return (
-        <div className={"min-h-screen"}>
+        <div className={"min-h-screen pb-5"}>
             <ProfileUserPlate/>
             <div className={"flex justify-center my-5 text-xl"}>
                 <ProfileNavPlate activeTab={"favorites"}/>
@@ -31,7 +31,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                       className="p-2 bg-brandWalnut text-brandLightgold  font-poppins text-xl rounded-md transition-transform hover:scale-110 m-5">
                     Find new stories
                 </Link>
-            </div> : <div className={"grid grid-cols-2 justify-items-center gap-4 max-w-6xl mx-auto m-5"}>
+            </div> : <div className={"grid grid-cols-2 justify-items-center gap-4 max-w-6xl mx-auto m-5 px-1"}>
                 {userFavorites?.map((userFavorite) => (
                     <ObjectMemoryCard key={userFavorite.favorite.memoryId}
                                       memoryId={userFavorite.favorite.memoryId} isFavorite={true}

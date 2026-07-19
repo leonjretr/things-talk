@@ -33,8 +33,6 @@ export const authOptions: NextAuthOptions = {
                 const {email, password} = schema.parse(raw);
 
                 const user = await getUserWithPasswordByEmail(email)
-                // console.log("LOGIN ATTEMPT", email)
-                // console.log("USER", user)
 
                 if (!user) return null
 
@@ -42,7 +40,7 @@ export const authOptions: NextAuthOptions = {
 
                 if (!ok) console.log("password problem: ", ok)
 
-                return {id: user.id, email: user.email, name: user.name}
+                return {id: user.id, email: user.email, name: user.name, surname: user.surname}
             }
         })
     ],
@@ -53,6 +51,7 @@ export const authOptions: NextAuthOptions = {
                 token.id = user.id
                 token.email = user.email
                 token.name = user.name
+                token.surname = user.surname
             }
             return token;
         },
@@ -61,6 +60,7 @@ export const authOptions: NextAuthOptions = {
                 session.user.id = token.id as string
                 session.user.email = token.email as string
                 session.user.name = token.name as string
+                session.user.surname = token.surname as string
             }
             return session;
         },
