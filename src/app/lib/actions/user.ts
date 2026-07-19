@@ -36,6 +36,7 @@ export async function getUserWithPasswordByEmail(email: string | null) {
                 id: users.id,
                 email: users.email,
                 name: users.name,
+                surname:users.surname,
                 passwordHash: credentials.passwordHash,
             })
             .from(users)
