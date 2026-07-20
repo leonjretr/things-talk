@@ -59,28 +59,28 @@ const AddMemoryForm = () => {
     const {formState: {errors}} = form;
 
     return (
-        <div className="flex justify-center">
-            <div className="w-full rounded-2xl bg-white p-8 m-5 shadow-sm border">
+        <div className="flex justify-center px-4 sm:px-0">
+            <div className="w-full max-w-2xl rounded-2xl bg-white p-5 sm:p-8 my-5 shadow-sm border">
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
-                        <div className={"flex flex-col leading-none justify-center items-center font-inter"}>
+                        <div className={"flex flex-col leading-none justify-center items-center font-inter text-center"}>
                             <FieldLegend
-                                className={"text-lg sm:text-xl font-semibold tracking-tight text-neutral-900 leading-4"}>
+                                className={"text-base sm:text-lg md:text-xl font-semibold tracking-tight text-neutral-900 leading-tight"}>
                                 Add your memory. Perpetuate it. Be an interpreter.
                             </FieldLegend>
-                            <p className="text-sm text-neutral-500 leading-3">
+                            <p className="text-sm text-neutral-500 leading-snug mt-1">
                                 Describe something meaningful. This will become part of your archive.
                             </p>
                         </div>
                         <FieldGroup>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Field className={"w-80 shrink-0"}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                                <Field className={"w-full"}>
                                     <FieldLabel className={"font-inter font-semibold"}>what is that
                                         thing?</FieldLabel>
                                     <Input {...form.register("title")} id={"title"} placeholder={"a book"}/>
                                     {errors.title && <FieldError>{errors.title.message}</FieldError>}
                                 </Field>
-                                <Field className={"w-80 shrink-0"}>
+                                <Field className={"w-full"}>
                                     <FieldLabel className={"font-inter font-semibold"}>describe
                                         what do you feel thinking about it?</FieldLabel>
                                     <Input {...form.register("emotions")} id={"emotions"}
@@ -88,31 +88,31 @@ const AddMemoryForm = () => {
                                     {errors.emotions && <FieldError>{errors.emotions.message}</FieldError>}
                                 </Field>
                             </div>
-                            <div className={"grid grid-cols-1 md:grid-cols-2 gap-6"}>
-                                <Field className={"w-80 shrink-0"}>
+                            <div className={"grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"}>
+                                <Field className={"w-full"}>
                                     <FieldLabel className={"font-inter font-semibold"}>who makes it
                                         special? </FieldLabel>
                                     <Input {...form.register("people")} id={"people"}
                                            placeholder={"dad, mom, or yourself"}/>
                                     {errors.people && <FieldError>{errors.people.message}</FieldError>}
                                 </Field>
-                                <Field
-                                    className={"w-80 shrink-0"}>
+                                <Field className={"w-full"}>
                                     <FieldLabel
                                         className={"font-inter font-semibold w-full break-keep"}>time
                                         has
                                         come. i&#39;ll let you unfold the story</FieldLabel>
                                     <Textarea {...form.register("memory")}
-                                              id={"memory"} placeholder={"once upon a time..."}/>
+                                              id={"memory"} placeholder={"once upon a time..."}
+                                              className={"min-h-[120px]"}/>
                                     {errors.memory && <FieldError>{errors.memory.message}</FieldError>}
                                 </Field>
                             </div>
                         </FieldGroup>
                     </FieldSet>
-                    <div className="pt-6 flex justify-end">
+                    <div className="pt-6 flex justify-center sm:justify-end">
                         <button
                             type="submit"
-                            className="flex items-center gap-x-2 px-5 py-2.5 rounded-lg font-poppins text-brandWalnut border-2 border-brandWalnut hover:bg-brandWalnut hover:text-white hover:opacity-90 transition-colors"
+                            className="w-full sm:w-auto flex items-center justify-center gap-x-2 px-5 py-2.5 rounded-lg font-poppins text-brandWalnut border-2 border-brandWalnut hover:bg-brandWalnut hover:text-white hover:opacity-90 transition-colors"
                         >
                             <FaPaperPlane/> save memory
                         </button>
