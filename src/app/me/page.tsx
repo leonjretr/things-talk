@@ -13,7 +13,7 @@ const Page = async () => {
         redirect("/login");
     }
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen pb-5">
             <ProfileUserPlate/>
 
             <div className="flex justify-center flex-wrap gap-2 my-6 px-4 text-lg md:text-xl">

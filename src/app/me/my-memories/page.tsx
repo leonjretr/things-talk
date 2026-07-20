@@ -20,12 +20,12 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
     const memories = await getMemoriesByUserPaginated(session?.user?.id, currentPage, fetchLimit, desc)
 
     return (
-        <div className={"min-h-screen"}>
+        <div className={"min-h-screen pb-5"}>
             <ProfileUserPlate/>
             <div className={"flex justify-center my-5 text-xl"}>
                 <ProfileNavPlate activeTab={"memories"}/>
             </div>
-            <div className={"grid grid-cols-2 justify-items-center gap-4 max-w-6xl mx-auto m-5"}>
+            <div className={"grid grid-cols-2 justify-items-center gap-4 max-w-6xl mx-auto m-5 px-1"}>
                 {memories?.length === 0 ?
                     <div> Sorry, you do not have any published memories at the
                         moment</div> : memories?.map((memory) => (
