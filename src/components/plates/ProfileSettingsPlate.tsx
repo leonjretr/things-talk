@@ -1,14 +1,21 @@
 'use client';
 
 import React, {useState} from 'react';
+import {useSession} from 'next-auth/react';
+import {useRouter} from 'next/navigation';
+import {updateUserProfile, updateUserPassword} from '@/app/lib/actions/user-actions';
 
 interface ProfileSettingsPlateProps {
     initialName: string;
     initialSurname: string;
     initialEmail: string;
+    isOAuthAccount: boolean;
 }
 
-const ProfileSettingsPlate = ({initialName, initialSurname, initialEmail}: ProfileSettingsPlateProps) => {
+const ProfileSettingsPlate = ({initialName, initialSurname, initialEmail, isOAuthAccount}: ProfileSettingsPlateProps) => {
+    const {update} = useSession();
+    const router = useRouter();
+
     const [name, setName] = useState(initialName);
     const [surname, setSurname] = useState(initialSurname);
     const [email, setEmail] = useState(initialEmail);
@@ -26,12 +33,12 @@ const ProfileSettingsPlate = ({initialName, initialSurname, initialEmail}: Profi
         setProfileSaving(true);
         setProfileMessage(null);
         try {
-            // TODO: replace with your server action, e.g.
-            // await updateUserProfile({ name, surname, email });
-            await new Promise((res) => setTimeout(res, 500));
+            await updateUserProfile({name, surname, email});
+            await update({name, surname, email});
+            router.refresh();
             setProfileMessage('Profile updated.');
         } catch (err) {
-            setProfileMessage('Something went wrong. Please try again.');
+            setProfileMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
         } finally {
             setProfileSaving(false);
         }
@@ -49,18 +56,20 @@ const ProfileSettingsPlate = ({initialName, initialSurname, initialEmail}: Profi
             setPasswordMessage('New password must be at least 8 characters.');
             return;
         }
+        if (!/[@#$]/.test(newPassword)) {
+            setPasswordMessage('New password must include @, # or $.');
+            return;
+        }
 
         setPasswordSaving(true);
         try {
-            // TODO: replace with your server action, e.g.
-            // await updateUserPassword({ currentPassword, newPassword });
-            await new Promise((res) => setTimeout(res, 500));
+            await updateUserPassword({currentPassword, newPassword});
             setPasswordMessage('Password updated.');
             setCurrentPassword('');
             setNewPassword('');
             setConfirmPassword('');
         } catch (err) {
-            setPasswordMessage('Could not update password. Check your current password.');
+            setPasswordMessage(err instanceof Error ? err.message : 'Could not update password. Check your current password.');
         } finally {
             setPasswordSaving(false);
         }
@@ -121,56 +130,66 @@ const ProfileSettingsPlate = ({initialName, initialSurname, initialEmail}: Profi
             </form>
 
             {/* Password */}
-            <form
-                onSubmit={handlePasswordSubmit}
-                className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-4"
-            >
-                <h2 className="text-xl md:text-2xl font-bold">change password</h2>
-
-                <label className="flex flex-col gap-1 text-sm font-medium text-gray-600">
-                    current password
-                    <input
-                        type="password"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
-                    />
-                </label>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                    <label className="flex-1 flex flex-col gap-1 text-sm font-medium text-gray-600">
-                        new password
-                        <input
-                            type="password"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
-                        />
-                    </label>
-
-                    <label className="flex-1 flex flex-col gap-1 text-sm font-medium text-gray-600">
-                        confirm new password
-                        <input
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
-                        />
-                    </label>
+            {isOAuthAccount ? (
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-2">
+                    <h2 className="text-xl md:text-2xl font-bold">change password</h2>
+                    <p className="text-sm text-gray-600">
+                        This account signs in through an external provider (e.g. GitHub), so it doesn&apos;t have a
+                        password to change.
+                    </p>
                 </div>
-
-                {passwordMessage && (
-                    <div className="text-sm text-gray-700">{passwordMessage}</div>
-                )}
-
-                <button
-                    type="submit"
-                    disabled={passwordSaving}
-                    className="self-start px-6 py-3 rounded-lg bg-brandWalnut text-white font-medium disabled:opacity-60"
+            ) : (
+                <form
+                    onSubmit={handlePasswordSubmit}
+                    className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-4"
                 >
-                    {passwordSaving ? 'saving...' : 'update password'}
-                </button>
-            </form>
+                    <h2 className="text-xl md:text-2xl font-bold">change password</h2>
+
+                    <label className="flex flex-col gap-1 text-sm font-medium text-gray-600">
+                        current password
+                        <input
+                            type="password"
+                            value={currentPassword}
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                            className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
+                        />
+                    </label>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <label className="flex-1 flex flex-col gap-1 text-sm font-medium text-gray-600">
+                            new password
+                            <input
+                                type="password"
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
+                            />
+                        </label>
+
+                        <label className="flex-1 flex flex-col gap-1 text-sm font-medium text-gray-600">
+                            confirm new password
+                            <input
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="border border-gray-300 rounded-lg px-3 py-2 text-base text-black"
+                            />
+                        </label>
+                    </div>
+
+                    {passwordMessage && (
+                        <div className="text-sm text-gray-700">{passwordMessage}</div>
+                    )}
+
+                    <button
+                        type="submit"
+                        disabled={passwordSaving}
+                        className="self-start px-6 py-3 rounded-lg bg-brandWalnut text-white font-medium disabled:opacity-60"
+                    >
+                        {passwordSaving ? 'saving...' : 'update password'}
+                    </button>
+                </form>
+            )}
         </div>
     );
 };
