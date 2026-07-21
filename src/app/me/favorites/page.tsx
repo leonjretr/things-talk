@@ -39,7 +39,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                                       description={userFavorite.memory.description}/>
                 ))}</div>}
             <div className={"flex justify-center"}>
-                <PageCounter currentPage={currentPage}/>
+                <PageCounter currentPage={currentPage} pageName={"favorites"}/>
             </div>
         </div>
     );

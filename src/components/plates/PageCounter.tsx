@@ -6,9 +6,10 @@ import Link from 'next/link';
 
 interface PageCounterProps {
     currentPage: number;
+    pageName: string;
 }
 
-const PageCounter = async ({currentPage}: PageCounterProps) => {
+const PageCounter = async ({currentPage, pageName}: PageCounterProps) => {
     const totalMemories = await getTotalMemories();
     const totalPages = Math.ceil(Number(totalMemories) / 10);
     if (totalPages === 0) return notFound();
@@ -27,7 +28,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
     return (
         <div className={"flex items-center gap-1 sm:gap-2 md:gap-3"}>
             {currentPage > 1 &&
-                <Link href={`/memories?page=${currentPage - 1}`}
+                <Link href={`/${pageName}?page=${currentPage - 1}`}
                       className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}>
                     <FaArrowLeft/>
                 </Link>}
@@ -35,7 +36,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
                 {pageArray.map((page) => (
                     <Link
                         key={page}
-                        href={`/memories?page=${page}`}
+                        href={`/${pageName}?page=${page}`}
                         className={`rounded-md px-3 py-1.5 border-2 border-brandWalnut font-poppins font-semibold text-md text-brandLightgold ${
                             page === currentPage
                                 ? currentPageColor
@@ -46,7 +47,7 @@ const PageCounter = async ({currentPage}: PageCounterProps) => {
                 ))}
             </div>
             {currentPage < totalPages &&
-                <Link href={`/memories?page=${currentPage + 1}`}
+                <Link href={`/${pageName}?page=${currentPage + 1}`}
                       className={"p-2 rounded-md hover:bg-brandLightgold hover:text-brandWalnut"}>
                     <FaArrowRight/>
                 </Link>}

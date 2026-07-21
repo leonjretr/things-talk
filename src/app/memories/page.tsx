@@ -16,7 +16,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
         <div className={"min-h-screen flex flex-col items-center justify-between m-10"}>
             <div className={"flex flex-col items-center"}>
                 <div className={"flex"}>
-                    <PageCounter currentPage={currentPage}/>
+                    <PageCounter currentPage={currentPage} pageName={"memories"}/>
                 </div>
                 <div className={"my-5"}>
                     {memories?.length === 0 ?
@@ -31,7 +31,7 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
             </div>
 
             <div className={"flex justify-end"}>
-                <PageCounter currentPage={currentPage}/>
+                <PageCounter currentPage={currentPage} pageName={"memories"}/>
             </div>
         </div>
     );
