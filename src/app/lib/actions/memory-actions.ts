@@ -50,3 +50,22 @@ export async function removeFavorite(memoryId: string) {
     revalidatePath("/me/my-memories");
     revalidatePath("/me/favorites");
 }
+
+export async function deleteMemory(memoryId: string) {
+    const session = await auth();
+    if (!session || !session.user) {
+        throw new Error("Unauthorized")
+    }
+
+    const [deletedMemory] = await db.delete(memories)
+        .where(and(eq(memories.id, memoryId), eq(memories.userId, session.user.id)))
+        .returning();
+
+    if (!deletedMemory) {
+        throw new Error("Memory not found or you do not have permission to delete it");
+    }
+
+    revalidatePath("/memories");
+    revalidatePath("/me/my-memories");
+    revalidatePath("/me/favorites");
+}

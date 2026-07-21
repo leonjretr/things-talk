@@ -36,7 +36,8 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                     <ObjectMemoryCard key={userFavorite.favorite.memoryId}
                                       memoryId={userFavorite.favorite.memoryId} isFavorite={true}
                                       title={userFavorite.memory.objectName}
-                                      description={userFavorite.memory.description}/>
+                                      description={userFavorite.memory.description}
+                                      isOwner={userFavorite.memory.userId === session?.user?.id}/>
                 ))}</div>}
             <div className={"flex justify-center"}>
                 <PageCounter currentPage={currentPage} pageName={"favorites"}/>

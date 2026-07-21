@@ -30,7 +30,8 @@ const Page = async ({searchParams}: { searchParams: Promise<{ page?: string }> }
                     <div> Sorry, you do not have any published memories at the
                         moment</div> : memories?.map((memory) => (
                         <ObjectMemoryCard key={memory.id} title={memory.objectName} memoryId={memory.id}
-                                          description={memory.description} isFavorite={memory.isFavorite}/>
+                                          description={memory.description} isFavorite={memory.isFavorite}
+                                          isOwner={true}/>
 
                     ))}
             </div>
