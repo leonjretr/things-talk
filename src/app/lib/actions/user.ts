@@ -1,6 +1,6 @@
 import "server-only"
 import {db} from "../db"
-import {users, credentials} from "../db/schema"
+import {users, credentials, accounts} from "../db/schema"
 import {eq} from "drizzle-orm"
 import bcrypt from "bcryptjs"
 
@@ -55,4 +55,10 @@ export async function verifyPassword(password: string, passwordHash: string) {
 export async function getUserNameById(userId: string) {
     const rows = await db.select({name: users.name, surname: users.surname}).from(users).where(eq(users.id, userId)).limit(2);
     return rows[0] ?? null;
+}
+
+export async function hasOAuthAccount(userId: string) {
+    const [row] = await db.select({provider: accounts.provider}).from(accounts)
+        .where(eq(accounts.userId, userId)).limit(1);
+    return !!row;
 }

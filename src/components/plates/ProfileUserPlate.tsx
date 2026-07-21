@@ -2,6 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import {auth} from "@/app/lib/auth/server";
 import {getTotalMemoriesByUser} from "@/app/lib/actions/memory-queries";
+import Link from 'next/link';
 
 const ProfileUserPlate = async () => {
     const session = await auth();
@@ -31,15 +32,14 @@ const ProfileUserPlate = async () => {
                     </div>
                 </div>
             </div>
-
             <div
                 className="flex justify-center lg:justify-end items-center">
-                <a href="/myprofile/mystories/newstory">
+                <Link href="/me/add">
                     <button
                         className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white text-black font-poppins font-medium">
                         post a memory
                     </button>
-                </a>
+                </Link>
             </div>
         </div>
     </div>);

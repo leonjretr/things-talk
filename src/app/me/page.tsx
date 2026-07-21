@@ -4,14 +4,16 @@ import {redirect} from 'next/navigation';
 import ProfileUserPlate from '@/components/plates/ProfileUserPlate';
 import ProfileNavPlate from '@/components/plates/ProfileNavPlate';
 import ProfileSettingsPlate from '@/components/plates/ProfileSettingsPlate';
+import {hasOAuthAccount} from '@/app/lib/actions/user';
 
 export const dynamic = "force-dynamic"
 
 const Page = async () => {
     const session = await auth();
-    if (!session) {
+    if (!session || !session.user) {
         redirect("/login");
     }
+    const isOAuthAccount = await hasOAuthAccount(session.user.id);
     return (
         <div className="min-h-screen pb-5">
             <ProfileUserPlate/>
@@ -21,9 +23,10 @@ const Page = async () => {
             </div>
 
             <ProfileSettingsPlate
-                initialName={session?.user?.name?.split(' ')[0] ?? ''}
-                initialSurname={session?.user?.surname?.split(' ').slice(1).join(' ') ?? ''}
+                initialName={session?.user?.name ?? ''}
+                initialSurname={session?.user?.surname ?? ''}
                 initialEmail={session?.user?.email ?? ''}
+                isOAuthAccount={isOAuthAccount}
             />
         </div>
     );

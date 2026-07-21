@@ -60,7 +60,7 @@ const AddMemoryForm = () => {
 
     return (
         <div className="flex justify-center px-4 sm:px-0">
-            <div className="w-full max-w-2xl rounded-2xl bg-white p-5 sm:p-8 my-5 shadow-sm border">
+            <div className="w-full max-w-3xl rounded-2xl bg-white p-5 sm:p-8 my-5 shadow-sm border">
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldSet>
                         <div className={"flex flex-col leading-none justify-center items-center font-inter text-center"}>
@@ -81,7 +81,7 @@ const AddMemoryForm = () => {
                                     {errors.title && <FieldError>{errors.title.message}</FieldError>}
                                 </Field>
                                 <Field className={"w-full"}>
-                                    <FieldLabel className={"font-inter font-semibold"}>describe
+                                    <FieldLabel className={"font-inter font-semibold"}>describe,
                                         what do you feel thinking about it?</FieldLabel>
                                     <Input {...form.register("emotions")} id={"emotions"}
                                            placeholder={"joy, loneliness, nostalgia"}/>

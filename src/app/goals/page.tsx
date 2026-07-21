@@ -1,6 +1,33 @@
 import React from 'react';
+import {FaReact} from "react-icons/fa";
+import {RiNextjsFill, RiTailwindCssFill} from "react-icons/ri";
+import {BiLogoTypescript, BiLogoPostgresql} from "react-icons/bi";
+import {IoShield, IoLogoVercel} from "react-icons/io5";
+import {SiDrizzle, SiZod} from "react-icons/si";
 
 const Page = () => {
+    const technologies = [
+        {name: "React", icon: <FaReact/>},
+        {name: "Next.js", icon: <RiNextjsFill/>},
+        {name: "TypeScript", icon: <BiLogoTypescript/>},
+        {name: "Tailwind CSS", icon: <RiTailwindCssFill/>},
+        {name: "Next-Auth.js", icon: <IoShield/>},
+        {name: "Drizzle ORM", icon: <SiDrizzle/>},
+        {name: "PostgreSQL", icon: <BiLogoPostgresql/>},
+        {name: "Zod", icon: <SiZod/>},
+        {name: "Vercel", icon: <IoLogoVercel/>},
+    ];
+    const skills = [
+        "• Authentication",
+        "• Server Actions",
+        "• Clean architecture",
+        "• Database design",
+        "• Form validation",
+        "• Server Components",
+        "• Responsive layouts",
+        "• Deployment with Vercel",
+    ];
+
     return (
         <div className={"min-h-screen"}>
             <div className={"flex flex-col p-10 font-poppins "}>
@@ -8,25 +35,37 @@ const Page = () => {
                     project goals
                 </div>
                 <div className={"flex items-start m-5"}>
-                    During the development of this project I omitted many things on purpose. <br/>
-                    My goal was to keep UI as minimalistic and simple as possible in order to let myself concentrate on
-                    technical part of the website and learning new tools.
+                    during the development of this project, I intentionally kept the interface minimal. <br/>
+                    the objective wasn&#39;t to build the most feature-complete website,
+                    but to learn modern full-stack development practices and create a solid technical foundation.
                 </div>
                 <div className={"flex justify-center text-brandCoffee font-normal text-4xl"}>
                     tech stack
                 </div>
-                {/*<div className={"flex items-start m-5 gap-3 text-xl justify-center"}>*/}
-                {/*    <div>*/}
-                {/*        React <br/>*/}
-                {/*        Next.js <br/>*/}
-                {/*        Auth.js <br/>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        Drizzle ORM <br/>*/}
-                {/*        PostgreSQL <br/>*/}
-                {/*        Zod <br/>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className="grid grid-cols-4 gap-3 mt-8">
+                    {technologies.map((tech) => (
+                        <div
+                            key={tech.name}
+                            className="flex items-center gap-2 rounded-lg border border-brandWalnut px-4 py-2 text-brandWalnut font-medium"
+                        >
+                            {tech.icon}{tech.name}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <h1 className={"flex justify-center text-brandCoffee font-normal text-4xl"}>things I learnt</h1>
+                    <div className={"grid grid-cols-2 gap-3 mt-5"}>
+                        {skills.map((skill) => (
+                            <div
+                                key={skill}
+                                className="rounded-lg px-4 py-2 text-white bg-brandWalnut font-medium"
+                            >
+                                {skill}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </div>
     );
