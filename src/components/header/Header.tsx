@@ -27,7 +27,8 @@ const Header = async () => {
                             things talk
                         </div>
                         <div
-                            className={"flex justify-center font-poppins italic text-xxs pt-3 leading-1 after:content-[''] sm:after:content-['what&#39;s their language?'] "}>
+                            className={"hidden sm:flex justify-center font-poppins italic text-xxs pt-3 leading-1"}>
+                            what&#39;s their language?
                         </div>
                     </Link>
                 </button>
