@@ -1,6 +1,7 @@
 import "server-only"
 import {NextAuthOptions} from "next-auth"
 import GitHub from "next-auth/providers/github"
+import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import {DrizzleAdapter} from "@auth/drizzle-adapter"
 import {db} from "../db/index"
@@ -17,6 +18,10 @@ export const authOptions: NextAuthOptions = {
         GitHub({
             clientId: env.GITHUB_ID!,
             clientSecret: env.GITHUB_SECRET!,
+        }),
+        Google({
+            clientId: env.GOOGLE_ID!,
+            clientSecret: env.GOOGLE_SECRET!,
         }),
         Credentials({
             name: "Credentials",

@@ -12,4 +12,6 @@ export const env = {
     NEXTAUTH_URL: required("NEXTAUTH_URL"),
     GITHUB_ID: required("GITHUB_ID"),
     GITHUB_SECRET: required("GITHUB_SECRET"),
+    GOOGLE_ID: required("GOOGLE_ID"),
+    GOOGLE_SECRET: required("GOOGLE_SECRET"),
 }

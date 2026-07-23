@@ -20,29 +20,22 @@ const Page = async () => {
                 </h1>
 
                 <div className="flex flex-col md:flex-row justify-center items-center md:items-start">
-
-                    {/* Credentials */}
                     <div className="flex flex-col w-full md:w-auto">
                         <div className="text-sm font-poppins mb-6 text-center md:text-right">
                             using credentials
                         </div>
-
                         <LoginForm/>
                     </div>
 
-                    {/* Divider */}
                     <div
                         className="my-8 h-px w-full bg-brandCoffee dark:bg-zinc-700 md:my-0 md:mx-8 md:h-auto md:w-px md:self-stretch"
                     />
 
-                    {/* Providers */}
                     <div className="flex flex-col w-full md:w-auto">
                         <div className="text-sm font-poppins mb-6 text-center">
                             using one of the services
                         </div>
-
                         <div className="flex flex-col gap-3 items-center md:items-start">
-
                             <ProviderButton
                                 text="Github"
                                 signProvider="github"
@@ -61,7 +54,6 @@ const Page = async () => {
                                 icon={<FaFacebook/>}
                                 whiteVersion={false}
                             />
-
                         </div>
                     </div>
 
